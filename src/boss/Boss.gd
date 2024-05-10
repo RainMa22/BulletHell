@@ -3,6 +3,7 @@ extends Node2D
 const PATTERN_DISABLED = -1
 const PATTERN_ANIMATION = 0
 const PATTERN_SHOOT_SPIRAL = 1
+const PATTERN_SHOOT_RANDOM = 2
 const TIME_PER_PATTERN = 5000.0
 
 
@@ -25,7 +26,16 @@ func _ready():
 
 
 func process_pattern(delta):
-	pass# TODO
+	match current_pattern:
+		PATTERN_DISABLED:
+			pass # TODO
+		PATTERN_ANIMATION:
+			pass # TODO
+		PATTERN_SHOOT_SPIRAL:
+			pass # TODO	
+		PATTERN_SHOOT_RANDOM:
+			pass # TODO
+		
 	
 func next_pattern(pattern):
 	pass# TODO
