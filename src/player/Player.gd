@@ -26,6 +26,10 @@ func _process(_delta):
 
 func update_inputs() -> void:
 	input_directional_vector = Input.get_vector("Left", "Right", "Up", "Down", -0.5) # Grab the inputs based on what the player is doing.
+	
+	if Input.is_action_just_pressed("Shoot"): # DEBUG, used for testing health mechanics.
+		($Health as Health).health -= 1
+		print($Health.health)
 
 
 
@@ -48,3 +52,9 @@ func update_physics_movement(delta) -> void:
 		velocity = Vector2(velocity.x, move_toward(velocity.y, target_velocity_vector.y, acceleration * delta))
 	
 	move_and_slide() # UPDATE movement!
+
+
+
+# DEATH.
+func _on_health_on_died():
+	queue_free()
