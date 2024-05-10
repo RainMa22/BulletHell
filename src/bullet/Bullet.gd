@@ -20,6 +20,8 @@ const expire_time = 1
 
 # INITALISATION
 func _ready():
+	Global.bullet_counter += 1
+	
 	init_starting_velocity()
 func _enter_tree():
 	init_starting_velocity()
@@ -38,7 +40,11 @@ func _physics_process(delta):
 # TODO: Add collision of bullet with other entities (player or enemy or boss)
 
 # DELETING PROCESS
+func destroy_self():
+	Global.bullet_counter -= 1
+	queue_free()
+
 func _on_on_screen_notifier_screen_exited():
 	expire_timer.start(expire_time)
 func _on_expire_timer_timeout():
-	queue_free()
+	destroy_self()

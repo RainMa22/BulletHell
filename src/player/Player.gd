@@ -10,26 +10,56 @@ class_name Player extends CharacterBody2D
 
 # INPUTS
 var input_directional_vector : Vector2 = Vector2.ZERO
+var is_shooting := false
 
 # MOVEMENT
 var target_velocity_vector : Vector2 = Vector2.ZERO
 
-var movement_speed : float = 500
-var acceleration : float = 800
-var deceleration : float = 1000
+var movement_speed : float = 300
+var acceleration : float = 1800
+var deceleration : float = 1500
+
+# SHOOTING
+var bullet = preload("res://src/bullet/Bullet.tscn")
+var can_shoot := true
+var shoot_cooldown = 0.2 # in seconds
+
+# COMPONENTS
+@onready var health : Health = $Health
+@onready var shoot_timer : Timer = $ShootTimer
+
+
 
 func _ready():
 	pass
 
-func _process(_delta):
+func _process(delta):
 	update_inputs()
+	update_shooting()
+	
+	look_at(global_position + Vector2.UP * 1000 + Vector2.RIGHT * velocity.x) # LEAN TOWARDS X-AXIS MOVEMENT (scuffed fix sometime)
 
 func update_inputs() -> void:
 	input_directional_vector = Input.get_vector("Left", "Right", "Up", "Down", -0.5) # Grab the inputs based on what the player is doing.
-	
-	if Input.is_action_just_pressed("Shoot"): # DEBUG, used for testing health mechanics.
-		($Health as Health).health -= 1
-		print($Health.health)
+	is_shooting = Input.is_action_pressed("Shoot")
+
+
+
+func _on_shoot_timer_timeout():
+	can_shoot = true
+func update_shooting() -> void:
+	if is_shooting and can_shoot and not health.is_dead:
+		var bullet_instance : Bullet = bullet.instantiate() as Bullet # INSTANTIATE A BULLET
+		
+		bullet_instance.starting_speed = 800 # SET SPEED
+		bullet_instance.starting_direction = global_position.direction_to($BulletSpawnPoint.global_position) # DIRECT IT TOWARDS SOMEWHERE
+		
+		get_parent().add_child(bullet_instance) # ADD TO TREE
+		
+		bullet_instance.global_position = $BulletSpawnPoint.global_position # Spawn bullet at that point. # SET POSITION TO SPAWN POINT
+		
+		can_shoot = false # COOLDOWN!
+		shoot_timer.start(shoot_cooldown)
 
 
 
