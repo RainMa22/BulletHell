@@ -15,7 +15,7 @@ var velocity := Vector2.ZERO
 
 
 func _ready():
-	position = Vector2(200, 200)
+	position = Vector2(0, 0)
 	init_bullet()
 
 func init_bullet() -> void:
