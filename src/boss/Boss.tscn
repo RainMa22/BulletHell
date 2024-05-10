@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/boss/Boss.gd" id="1_i14ya"]
 
 [node name="Boss" type="Node2D"]
+position = Vector2(512, 512)
 script = ExtResource("1_i14ya")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

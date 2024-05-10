@@ -6,7 +6,7 @@ const PATTERN_SHOOT_SPIRAL = 1
 const PATTERN_SHOOT_RANDOM = 2
 const TIME_PER_PATTERN = 5.0
 
-const RANDOM_BULLET_AMOUNT = 10
+#const RANDOM_BULLET_AMOUNT_PER_SEC = 100
 
 var current_pattern: int
 var pattern_time_remaining: float
@@ -36,12 +36,11 @@ func process_pattern(delta):
 			pass # TODO	
 		PATTERN_SHOOT_RANDOM:
 			var rng = RandomNumberGenerator.new()
-			for i in range(RANDOM_BULLET_AMOUNT):
-				var bullet_copy = bullet.instantiate();
-				var direction = Vector2(rng.randf_range(-1,1),rng.randf_range(-1,1)).normalized()
-				bullet_copy.position = self.position
-				bullet_copy.starting_direction = direction
-				add_child(bullet_copy)
+			var bullet_copy = bullet.instantiate();
+			var direction = Vector2(rng.randf_range(-1,1),rng.randf_range(-1,1)).normalized()
+			bullet_copy.position = self.position
+			bullet_copy.starting_direction = direction
+			add_child(bullet_copy)
 				
 				
 		
