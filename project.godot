@@ -21,8 +21,8 @@ Global="*res://src/global/Global.gd"
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=1080
+window/size/viewport_width=800
+window/size/viewport_height=600
 
 [file_customization]
 
