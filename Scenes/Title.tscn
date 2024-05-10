@@ -17,7 +17,7 @@ offset_right = 830.0
 offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play From Save ({current_boss}-th boss)"
+text = "Play From Save ({current_boss}-{suffix} boss)"
 script = ExtResource("1_70yhf")
 
 [node name="PlayNew" type="Button" parent="."]

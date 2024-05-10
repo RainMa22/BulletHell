@@ -1,14 +1,26 @@
 extends Button
 
 
-## TODO
 func get_current_boss() -> int:
-	return 0 #stub
+	return Global.current_boss
+
+func generate_suffix(current_boss):
+	var suffix = "th"
+	if current_boss == 1:
+		suffix = "st"
+	elif current_boss ==2:
+		suffix = "nd"
+	return suffix
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.pressed.connect(self._button_pressed);
-	self.text = self.text.format({"current_boss": get_current_boss()}) 
+	var current_boss = get_current_boss()
+	self.text = self.text.format(
+		{
+			"current_boss": current_boss,
+			"suffix": generate_suffix(current_boss)
+		}) 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
