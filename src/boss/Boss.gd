@@ -54,5 +54,12 @@ func _process(delta):
 
 # HEALTH.
 func hit_by_bullet(bullet : Bullet):
-	health.health -= 1
-
+	health.health -= bullet.damage # Take damage.
+	if bullet.allow_invincibility_frames:
+		health.start_invincibility() # Run a invincibility time.
+	
+	# TODO: Flash the player visual/other animation upon hit.
+func _on_health_on_died():
+	# TODO: magnificent death animation.
+	
+	queue_free()

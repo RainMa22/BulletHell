@@ -5,6 +5,7 @@
 [node name="PlayerBullet" instance=ExtResource("1_bg76o")]
 collision_layer = 8
 collision_mask = 5
+allow_invincibility_frames = false
 
 [node name="Circle" parent="." index="0"]
 modulate = Color(0, 0.992157, 0.996078, 1)

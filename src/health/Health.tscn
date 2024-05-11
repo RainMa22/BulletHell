@@ -4,3 +4,7 @@
 
 [node name="Health" type="Node"]
 script = ExtResource("1_rix5u")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

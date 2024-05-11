@@ -18,6 +18,16 @@ signal on_max_health_decreased(change)
 signal on_died
 signal on_revived
 
+# I-FRAME LOGIC
+@onready var invincibility_timer = $InvincibilityTimer
+var is_invincible = false
+var invincibility_time = 0.2
+func _on_invincibility_timer_timeout():
+	is_invincible = false
+func start_invincibility() -> void:
+	is_invincible = true
+	invincibility_timer.start(invincibility_time)
+
 
 
 var is_dead = false
@@ -66,3 +76,5 @@ func revive(restarting_health : int = 1) -> void:
 	is_dead = false # Undie thyself!
 	health = restarting_health # Start with some health.
 	on_revived.emit() # Revived!
+
+

@@ -17,3 +17,5 @@ color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(0, -24, -77, -51, 0, 16, 29.6651, -8.08112, 85, -53)
 
 [node name="Health" parent="." instance=ExtResource("2_iuv1q")]
+
+[connection signal="on_died" from="Health" to="." method="_on_health_on_died"]

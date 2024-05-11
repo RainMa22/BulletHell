@@ -7,12 +7,15 @@ class_name Bullet extends Area2D
 # The bullet. #
 ###############
 
+# TODO: Different visual styles/speeds/variations for bullets, different visuals corresponding to different effects.
+
 @export var is_enemy := false
 
 # Damage stats!
 
 @export var damage := 1
 @export var should_disappear_after_collision := true
+@export var allow_invincibility_frames := true
 
 # Remember to set position, direction, and speed!
 var starting_direction := Vector2.UP
@@ -52,7 +55,7 @@ func _physics_process(delta):
 
 
 
-# TODO: Add collision of bullet with other entities (player or enemy or boss)
+# COLLISION WITH BODIES (Player and Bosses, Enemies)
 func _on_body_entered(body):
 	collide_with_body(body)
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

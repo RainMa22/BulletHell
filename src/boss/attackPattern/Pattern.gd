@@ -27,7 +27,8 @@ func time_remaining():
 	return times_per_pattern - lifetime_accumulator
 
 func add_child(item: Node):
-	boss.add_child(item)
+	boss.get_parent().add_child(item)
+	item.global_position = boss.global_position
 
 func _process_pattern(delta):
 	if is_done():
