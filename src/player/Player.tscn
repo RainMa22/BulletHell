@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://vgf7hy66lvwt" path="res://src/health/Health.tscn" id="2_7ekla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65j3p"]
+radius = 3.5
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 21
+input_pickable = true
 script = ExtResource("1_fdp0l")
 
 [node name="Polygon" type="Polygon2D" parent="."]

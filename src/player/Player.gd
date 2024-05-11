@@ -20,7 +20,7 @@ var acceleration : float = 1800
 var deceleration : float = 1500
 
 # SHOOTING
-var bullet = preload("res://src/bullet/Bullet.tscn")
+var bullet = preload("res://src/bullet/PlayerBullet.tscn")
 var can_shoot := true
 var shoot_cooldown = 0.2 # in seconds
 
@@ -44,13 +44,13 @@ func _process(delta):
 		global_position.x -= 250 + 275
 	elif global_position.x < -275:
 		global_position.x += 250 + 275
-		
+	
 	# CLAMP BOTTOM OF SCREEN
 	global_position.y = clamp(global_position.y, -get_viewport().size.y/2, get_viewport().size.y/2) # DON'T HARDCODE VARIABLES?
 
 func update_inputs() -> void:
 	input_directional_vector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")) # Grab the inputs based on what the player is doing.
-	print(input_directional_vector)
+	# print(input_directional_vector)
 	is_shooting = Input.is_action_pressed("Shoot")
 
 
@@ -95,6 +95,9 @@ func update_physics_movement(delta) -> void:
 
 
 
+# HEALTH.
+func hit_by_bullet(bullet : Bullet):
+	health.health -= 1
 # DEATH.
 func _on_health_on_died():
 	queue_free()

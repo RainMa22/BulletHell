@@ -7,7 +7,7 @@ var lifetime_accumulator: float
 var bullet_accumulator: float
 var boss: Boss
 
-var bullet = preload("res://src/bullet/Bullet.tscn")
+var bullet = preload("res://src/bullet/EnemyBullet.tscn")
 
 
 func _init(boss: Boss, times_per_pattern, times_per_bullet):

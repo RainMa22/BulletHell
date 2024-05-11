@@ -1,4 +1,4 @@
-class_name Boss extends Node2D
+class_name Boss extends CharacterBody2D
 
 const DEFAULT_PATTERN_RATE= 5
 const DEFAULT_FIRERATE= .02
@@ -7,7 +7,7 @@ var patterns = null
 var state
 var health: Health
 
-var bullet = preload("res://src/bullet/Bullet.tscn")
+var bullet = preload("res://src/bullet/EnemyBullet.tscn")
 
 # Takes a variety, a Array of vector2s of size >= NUM_STATES, and a Array of vector2s of size >= NUM_STATES
 # returns variety sized times_per_pattern times_per_bullet and patterns
@@ -49,6 +49,10 @@ func on_pattern_done():
 func _process(delta):
 	process_pattern(delta)
 		
-	
 
+
+
+# HEALTH.
+func hit_by_bullet(bullet : Bullet):
+	health.health -= 1
 

@@ -24,4 +24,4 @@ func _ready():
 	current_boss = 1
 
 func _process(delta):
-	chaos_value = float(bullet_counter) / 50
+	chaos_value = float(bullet_counter) / 100
