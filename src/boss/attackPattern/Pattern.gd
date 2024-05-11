@@ -5,15 +5,15 @@ var times_per_bullet: float
 
 var lifetime_accumulator: float
 var bullet_accumulator: float
-var boss: Boss
+var enemy: Enemy
 
 var bullet = preload("res://src/bullet/EnemyBullet.tscn")
 
 
-func _init(boss: Boss, times_per_pattern, times_per_bullet):
+func _init(enemy: Enemy, times_per_pattern, times_per_bullet):
 	self.times_per_pattern = times_per_pattern
 	self.times_per_bullet = times_per_bullet
-	self.boss = boss
+	self.enemy = enemy
 	reset()
 
 func reset():
@@ -30,12 +30,12 @@ func set_bullet(bullet: Node):
 	self.bullet = bullet
 
 func add_child(item: Node):
-	boss.get_parent().add_child(item)
-	item.global_position = boss.global_position
+	enemy.get_parent().add_child(item)
+	item.global_position = enemy.global_position
 
 func _process_pattern(delta):
 	if is_done():
-		boss.on_pattern_done()
+		enemy.on_pattern_done()
 
 	
 	

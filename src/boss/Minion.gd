@@ -1,29 +1,29 @@
-class_name Boss extends Enemy
+class_name Minion extends Enemy
 
+
+var health_value: int
 var variety: int
-var difficulty:float
+var difficulty: int
 
 func get_pattern_rate():
 	return 5
 
 func get_firerate():
-	return .02
+	return .5
 
-func _init(variety:int = 50, difficulty: float = 1.0):
+func _init(health_value:int = 10, variety: int = 3, difficulty: float=1.0):
+	self.health_value = health_value
 	self.variety = variety
 	self.difficulty = difficulty
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	health = $Health
-	health.max_health = 100
-	health.health = 100
+	self.health.max_health = health_value
+	self.health.health = health_value
+	self.randomize(variety, 3, 0, difficulty)
 	patterns = [RandomPattern.new(self,get_pattern_rate(),get_firerate())]
-	self.randomize(variety, 0, 0, difficulty)
-	
-
-
 
 func process_pattern(delta):
 	var current_pattern = patterns[state]

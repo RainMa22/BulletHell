@@ -14,7 +14,11 @@ var boss : Boss
 
 func _ready():
 	Global.bullet_counter = 0 # Reset bullet counter when the game opens.
-
+	boss = $GameContent/Boss
+	boss.health.on_died.connect(boss_died)
+	player = $GameContent/Player
+	player.health.on_died.connect(player_died)
+	
 func _process(delta):
 	pass
 

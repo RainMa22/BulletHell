@@ -31,8 +31,9 @@ var shoot_cooldown = 0.2 # in seconds
 
 
 func _ready():
-	get_parent().get_parent().player = self
-	health.on_died.connect(get_parent().get_parent().player_died)
+	#get_parent().get_parent().player = self
+	#health.on_died.connect(get_parent().get_parent().player_died)
+	pass
 
 func _process(delta):
 	update_inputs()

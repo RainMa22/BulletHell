@@ -1,14 +1,14 @@
 class_name SpiralPattern extends Pattern
 
-const SPIRAL_MIN = 5
+const SPIRAL_MIN = 3
 const SPIRAL_MAX = 9
 
 var n_trails: int
 var reversed: bool
 
 
-func _init(boss:Boss, times_per_pattern, times_per_bullet, n_trails = 3, reversed = false):
-	super(boss, times_per_pattern, times_per_bullet*n_trails)
+func _init(enemy:Enemy, times_per_pattern, times_per_bullet, n_trails = 3, reversed = false):
+	super(enemy, times_per_pattern, times_per_bullet*n_trails)
 	self.n_trails = n_trails
 	self.reversed = reversed
 	

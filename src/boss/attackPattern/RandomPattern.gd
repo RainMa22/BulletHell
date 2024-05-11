@@ -2,8 +2,8 @@ class_name RandomPattern extends Pattern
 
 var rng
 
-func _init(boss:Boss, times_per_pattern, times_per_bullet):
-	super(boss, times_per_pattern, times_per_bullet)
+func _init(enemy:Enemy, times_per_pattern, times_per_bullet):
+	super(enemy, times_per_pattern, times_per_bullet)
 	self.rng = RandomNumberGenerator.new()
 	
 func _process_pattern(delta):
