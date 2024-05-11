@@ -16,7 +16,6 @@ func _init(variety:int = 50, difficulty: float = 1.0):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	health = $Health
 	health.max_health = 100
 	health.health = 100
 	patterns = [RandomPattern.new(self,get_pattern_rate(),get_firerate())]
@@ -48,12 +47,11 @@ func hit_by_bullet(bullet : Bullet):
 	
 	# TODO: Flash the player visual/other animation upon hit.
 func _on_health_on_died():
-	# TODO: magnificent death animation.
-	
+	super._on_health_on_died()
 	Global.current_boss += 1
 	
 	# INCREMENT CONFIG
 	ConfigManager.current_config.current_boss_number = Global.current_boss
 	ConfigManager.save_config(ConfigManager.current_config)
 	
-	queue_free()
+	#queue_free()

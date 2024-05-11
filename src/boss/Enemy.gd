@@ -8,6 +8,7 @@ var health : Health
 func _ready():
 	health = $Health
 	state = 0
+	health.on_died.connect(_on_health_on_died)
 
 func get_pattern_rate():
 	push_error("Please Override get_pattern_rate")
@@ -17,7 +18,11 @@ func get_firerate():
 	push_error("Please Override get_firerate")
 	return NAN
 
-
+func _on_health_on_died():
+	var tween: Tween = self.create_tween()
+	tween.tween_property(self, "modulate:a", 0, 0.3)
+	# TODO: Spawn Explosions or something
+	tween.tween_callback(queue_free)
 
 # Takes a variety, a Array of vector2s of size >= NUM_STATES, and a Array of vector2s of size >= NUM_STATES
 # returns variety sized times_per_pattern times_per_bullet and patterns

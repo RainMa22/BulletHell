@@ -48,12 +48,4 @@ func hit_by_bullet(bullet : Bullet):
 	
 	# TODO: Flash the player visual/other animation upon hit.
 func _on_health_on_died():
-	# TODO: magnificent death animation.
-	
-	Global.current_boss += 1
-	
-	# INCREMENT CONFIG
-	ConfigManager.current_config.current_boss_number = Global.current_boss
-	ConfigManager.save_config(ConfigManager.current_config)
-	
-	queue_free()
+	super._on_health_on_died()
