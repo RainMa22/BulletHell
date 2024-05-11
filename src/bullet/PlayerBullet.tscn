@@ -8,6 +8,9 @@ collision_mask = 5
 allow_invincibility_frames = false
 
 [node name="Circle" parent="." index="0"]
-modulate = Color(0, 0.992157, 0.996078, 1)
+modulate = Color(0.133333, 0.137255, 0.137255, 1)
+
+[node name="Circle2" parent="." index="1"]
+modulate = Color(0.941176, 0.964706, 0.941176, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

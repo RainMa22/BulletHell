@@ -13,7 +13,13 @@ input_pickable = true
 script = ExtResource("1_fdp0l")
 
 [node name="Polygon" type="Polygon2D" parent="."]
-color = Color(0.298039, 1, 1, 1)
+color = Color(0.133333, 0.137255, 0.137255, 1)
+polygon = PackedVector2Array(0, -16, -16, 0, 0, 16, 16, 0)
+
+[node name="Polygon2" type="Polygon2D" parent="."]
+position = Vector2(-1.19209e-07, 3.57628e-07)
+scale = Vector2(0.625, 0.625)
+color = Color(0.941176, 0.964706, 0.941176, 1)
 polygon = PackedVector2Array(0, -16, -16, 0, 0, 16, 16, 0)
 
 [node name="Collider" type="CollisionShape2D" parent="."]
