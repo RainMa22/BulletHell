@@ -41,23 +41,26 @@ scale = Vector2(10000, 10000)
 texture = ExtResource("5_8pbe5")
 
 [node name="BackgroundGrid2" parent="GameContent" instance=ExtResource("7_rkqf8")]
-position = Vector2(250, 1064)
-dot_color = Color(0.823529, 0.823529, 0.823529, 1)
+position = Vector2(250, 1016)
+dot_color = Color(0.847059, 0.847059, 0.847059, 1)
 dot_radius = 4
-width = 500.0
+width = 600.0
 height = 800.0
-num_of_dots_x = 8
-num_of_dots_y = 18
-time_for_one_delta_scroll = 3.0
+num_of_dots_x = 12
+num_of_dots_y = 19
+parallax_x_factor = -1
+time_for_one_x_delta_scroll = 7.0
+time_for_one_y_delta_scroll = 3.0
 
 [node name="BackgroundGrid" parent="GameContent" instance=ExtResource("7_rkqf8")]
 position = Vector2(250, 1000)
-dot_color = Color(0.545098, 0.545098, 0.545098, 1)
+dot_color = Color(0.709804, 0.709804, 0.709804, 1)
 dot_radius = 4
-width = 400.0
+width = 600.0
 height = 800.0
-num_of_dots_x = 7
-num_of_dots_y = 18
+num_of_dots_y = 19
+parallax_x_factor = 1
+time_for_one_x_delta_scroll = 5.0
 
 [node name="Player" parent="GameContent" instance=ExtResource("1_udpsn")]
 position = Vector2(250, 1256)
