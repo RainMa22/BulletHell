@@ -14,7 +14,6 @@ func _init(boss: Boss, times_per_pattern, times_per_bullet):
 	self.times_per_pattern = times_per_pattern
 	self.times_per_bullet = times_per_bullet
 	self.boss = boss
-	print(times_per_pattern, times_per_bullet)
 	reset()
 
 func reset():
