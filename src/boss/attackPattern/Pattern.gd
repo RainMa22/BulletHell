@@ -26,6 +26,9 @@ func is_done():
 func time_remaining():
 	return times_per_pattern - lifetime_accumulator
 
+func set_bullet(bullet: Node):
+	self.bullet = bullet
+
 func add_child(item: Node):
 	boss.get_parent().add_child(item)
 	item.global_position = boss.global_position

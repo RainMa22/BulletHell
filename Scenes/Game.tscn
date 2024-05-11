@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cy4gofdhytyvf" path="res://src/boss/Boss.tscn" id="2_4fr0q"]
 [ext_resource type="PackedScene" uid="uid://crodou4hnnv8n" path="res://src/ui/RAMBar.tscn" id="4_oghjs"]
 [ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_8pbe5"]
-[ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/music.tscn" id="7_gw7n1"]
+[ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/Music.tscn" id="7_gw7n1"]
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
 
 [node name="Game" type="Node2D"]
