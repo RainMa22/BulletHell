@@ -32,6 +32,13 @@ func init_starting_velocity() -> void:
 
 
 # MOVEMENT
+func _process(delta):
+	# LOOP AT EDGES (make thing go around when reach the sides)
+	if global_position.x > 275:
+		global_position.x -= 250 + 275
+	elif global_position.x < -275:
+		global_position.x += 250 + 275
+
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.
 

@@ -38,9 +38,19 @@ func _process(delta):
 	update_shooting()
 	
 	look_at(global_position + Vector2.UP * 1000 + Vector2.RIGHT * velocity.x) # LEAN TOWARDS X-AXIS MOVEMENT (scuffed fix sometime)
+	
+	# LOOP AT EDGES (make thing go around when reach the sides)
+	if global_position.x > 275:
+		global_position.x -= 250 + 275
+	elif global_position.x < -275:
+		global_position.x += 250 + 275
+		
+	# CLAMP BOTTOM OF SCREEN
+	global_position.y = clamp(global_position.y, -get_viewport().size.y/2, get_viewport().size.y/2) # DON'T HARDCODE VARIABLES?
 
 func update_inputs() -> void:
-	input_directional_vector = Input.get_vector("Left", "Right", "Up", "Down", -0.5) # Grab the inputs based on what the player is doing.
+	input_directional_vector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")) # Grab the inputs based on what the player is doing.
+	print(input_directional_vector)
 	is_shooting = Input.is_action_pressed("Shoot")
 
 
