@@ -49,4 +49,4 @@ func random_pattern(rng: RandomNumberGenerator, pattern_time, firerate):
 	else:
 		pattern = SpiralPattern.new(self, pattern_time,firerate, 
 		randi_range(SpiralPattern.SPIRAL_MIN, SpiralPattern.SPIRAL_MAX),rng.randi_range(0,1) == 1)
-	patterns.append(pattern)
+	return pattern
