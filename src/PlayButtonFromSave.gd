@@ -14,6 +14,7 @@ func generate_suffix(current_boss):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	grab_focus() # SELECT for navigation with arrow keys or controller.
 	self.pressed.connect(self._button_pressed);
 	var current_boss = get_current_boss()
 	self.text = self.text.format(

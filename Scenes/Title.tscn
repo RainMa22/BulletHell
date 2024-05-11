@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://g8isddkkro7e"]
 
-[ext_resource type="Script" path="res://src/PlayButtonFromSave.gd" id="1_70yhf"]
-[ext_resource type="Script" path="res://src/PlayButtonFromNew.gd" id="2_8jt0w"]
+[ext_resource type="Script" path="res://src/PlayButtonFromSave.gd" id="1_uj2od"]
+[ext_resource type="Script" path="res://src/PlayButtonFromNew.gd" id="2_mh1gu"]
 
 [node name="Title" type="Node2D"]
 
@@ -27,7 +27,7 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play From Save ({current_boss}-{suffix} boss)"
-script = ExtResource("1_70yhf")
+script = ExtResource("1_uj2od")
 
 [node name="PlayNew" type="Button" parent="Control"]
 layout_mode = 1
@@ -43,7 +43,7 @@ offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play New"
-script = ExtResource("2_8jt0w")
+script = ExtResource("2_mh1gu")
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 clip_contents = false

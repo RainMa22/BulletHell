@@ -37,6 +37,7 @@ func _ready():
 	self.randomize(50, 0, 0)
 
 
+
 func process_pattern(delta):
 	var current_pattern = patterns[state]
 	current_pattern._process_pattern(delta)
@@ -62,4 +63,5 @@ func hit_by_bullet(bullet : Bullet):
 func _on_health_on_died():
 	# TODO: magnificent death animation.
 	
+	Global.current_boss += 1
 	queue_free()
