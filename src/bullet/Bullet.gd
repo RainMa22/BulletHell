@@ -23,8 +23,7 @@ var starting_speed := 200
 
 var velocity := Vector2.ZERO
 
-@onready var expire_timer : Timer = $ExpireTimer
-const expire_time = 0.01
+@onready var screen_notifier : VisibleOnScreenNotifier2D = $OnScreenNotifier
 
 
 
@@ -41,8 +40,6 @@ func init_starting_velocity() -> void:
 
 
 
-var accumulated_time := 0.0
-
 # MOVEMENT
 func _process(delta):
 	# LOOP AT EDGES (make thing go around when reach the sides)
@@ -50,8 +47,8 @@ func _process(delta):
 	# 	global_position.x -= 250 + 275
 	# elif global_position.x < -275:
 	# 	global_position.x += 250 + 275
-	accumulated_time += delta
-	if accumulated_time >= 30:
+
+	if not screen_notifier.is_on_screen():
 		destroy_self()
 
 func _physics_process(delta):
@@ -77,10 +74,3 @@ func collide_with_body(body):
 func destroy_self():
 	Global.bullet_counter -= 1
 	queue_free()
-
-func _on_on_screen_notifier_screen_exited():
-	expire_timer.start(expire_time)
-func _on_expire_timer_timeout():
-	destroy_self()
-
-

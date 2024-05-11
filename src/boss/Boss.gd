@@ -31,7 +31,7 @@ func process_pattern(delta):
 func on_pattern_done():
 	state = (state+1) % len(patterns)
 	patterns[state].reset()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	process_pattern(delta)
