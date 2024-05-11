@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3eviuhl035cw"]
+
+[ext_resource type="AudioStream" uid="uid://dkfcjcakp2a8g" path="res://resources/music/ProGamingTechnique.wav" id="1_08uty"]
+[ext_resource type="Script" path="res://src/sound/music/Music.gd" id="2_2f8xd"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_08uty")
+autoplay = true
+script = ExtResource("2_2f8xd")

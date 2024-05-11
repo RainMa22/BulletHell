@@ -41,6 +41,8 @@ func init_starting_velocity() -> void:
 
 
 
+var accumulated_time := 0.0
+
 # MOVEMENT
 func _process(delta):
 	# LOOP AT EDGES (make thing go around when reach the sides)
@@ -48,7 +50,9 @@ func _process(delta):
 	# 	global_position.x -= 250 + 275
 	# elif global_position.x < -275:
 	# 	global_position.x += 250 + 275
-	pass
+	accumulated_time += delta
+	if accumulated_time >= 30:
+		destroy_self()
 
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.

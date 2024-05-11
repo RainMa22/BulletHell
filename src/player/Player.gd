@@ -42,9 +42,9 @@ func _process(delta):
 	
 	# LOOP AT EDGES (make thing go around when reach the sides)
 	if global_position.x > 275:
-		global_position.x -= 250 + 275
+		global_position.x -= 550
 	elif global_position.x < -275:
-		global_position.x += 250 + 275
+		global_position.x += 550
 	
 	# CLAMP BOTTOM OF SCREEN
 	global_position.y = clamp(global_position.y, -get_viewport().size.y/2, get_viewport().size.y/2) # DON'T HARDCODE VARIABLES?

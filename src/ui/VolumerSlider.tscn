@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhc0ufx4ih1rd"]
+
+[ext_resource type="Script" path="res://src/ui/VolumerSlider.gd" id="1_hesp5"]
+
+[node name="VolumeSlider" type="HSlider"]
+offset_left = -240.0
+offset_top = 256.0
+offset_bottom = 272.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+script = ExtResource("1_hesp5")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -16,7 +16,11 @@ func randomize(variety:int, pattern_time_variance, bullet_rate_variance, difficu
 	var time_per_pattern = DEFAULT_PATTERN_RATE
 	var time_per_bullet = DEFAULT_FIRERATE * difficulty_scaling
 	var rng = RandomNumberGenerator.new()
+	
+	ConfigManager.load_config()
+	Global.current_boss = ConfigManager.current_config.current_boss_number
 	rng.set_seed(Global.current_boss)
+	
 	for i in range(variety):
 		var num = rng.randi_range(0,3)
 		var pattern_time = time_per_pattern + randf_range(-pattern_time_variance/2,pattern_time_variance/2)
@@ -70,4 +74,9 @@ func _on_health_on_died():
 	# TODO: magnificent death animation.
 	
 	Global.current_boss += 1
+	
+	# INCREMENT CONFIG
+	ConfigManager.current_config.current_boss_number = Global.current_boss
+	ConfigManager.save_config(ConfigManager.current_config)
+	
 	queue_free()

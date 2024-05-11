@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://src/Game.gd" id="1_fg8e7"]
 [ext_resource type="PackedScene" uid="uid://cwn1aknxem4n4" path="res://src/player/Player.tscn" id="1_udpsn"]
 [ext_resource type="PackedScene" uid="uid://cy4gofdhytyvf" path="res://src/boss/Boss.tscn" id="2_4fr0q"]
-[ext_resource type="PackedScene" uid="uid://crodou4hnnv8n" path="res://src/ui/ram_bar.tscn" id="4_oghjs"]
+[ext_resource type="PackedScene" uid="uid://crodou4hnnv8n" path="res://src/ui/RAMBar.tscn" id="4_oghjs"]
 [ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_8pbe5"]
-[ext_resource type="AudioStream" uid="uid://dkfcjcakp2a8g" path="res://resources/music/ProGamingTechnique.wav" id="6_en3a1"]
+[ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/music.tscn" id="7_gw7n1"]
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
 
 [node name="Game" type="Node2D"]
@@ -50,7 +50,6 @@ num_of_dots_x = 12
 num_of_dots_y = 19
 parallax_x_factor = -1
 time_for_one_x_delta_scroll = 7.0
-time_for_one_y_delta_scroll = 3.0
 
 [node name="BackgroundGrid" parent="GameContent" instance=ExtResource("7_rkqf8")]
 position = Vector2(250, 1000)
@@ -61,6 +60,7 @@ height = 800.0
 num_of_dots_y = 19
 parallax_x_factor = 1
 time_for_one_x_delta_scroll = 5.0
+time_for_one_y_delta_scroll = 0.5
 
 [node name="Player" parent="GameContent" instance=ExtResource("1_udpsn")]
 position = Vector2(250, 1256)
@@ -107,6 +107,4 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_en3a1")
-autoplay = true
+[node name="Music" parent="." instance=ExtResource("7_gw7n1")]
