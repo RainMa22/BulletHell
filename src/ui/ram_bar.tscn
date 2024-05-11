@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://crodou4hnnv8n"]
+[gd_scene load_steps=4 format=3 uid="uid://crodou4hnnv8n"]
 
 [ext_resource type="Script" path="res://src/ui/RAMBar.gd" id="1_bqt02"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lehv8"]
+bg_color = Color(0.372549, 0.396078, 0.458824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee0f"]
+bg_color = Color(0.909804, 0.854902, 0.898039, 1)
 
 [node name="RAMBar" type="ProgressBar"]
 offset_right = 512.0
 offset_bottom = 128.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lehv8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gee0f")
 max_value = 1.0
 step = 0.001
 show_percentage = false

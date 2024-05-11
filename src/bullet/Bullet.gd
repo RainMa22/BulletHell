@@ -24,7 +24,7 @@ var starting_speed := 200
 var velocity := Vector2.ZERO
 
 @onready var expire_timer : Timer = $ExpireTimer
-const expire_time = 0.1
+const expire_time = 0.01
 
 
 

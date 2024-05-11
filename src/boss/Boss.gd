@@ -5,7 +5,7 @@ const DEFAULT_FIRERATE= .02
 
 var patterns = null
 var state
-var health: Health
+var health : Health
 
 var bullet = preload("res://src/bullet/EnemyBullet.tscn")
 
@@ -32,6 +32,12 @@ func randomize(variety:int, pattern_time_variance, bullet_rate_variance, difficu
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = $Health
+	health.max_health = 100
+	health.health = 100
+	
+	get_parent().get_parent().boss = self
+	health.on_died.connect(get_parent().get_parent().boss_died)
+	
 	state = 0
 	patterns = [RandomPattern.new(self,DEFAULT_PATTERN_RATE,DEFAULT_FIRERATE)]
 	self.randomize(50, 0, 0)
