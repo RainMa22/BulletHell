@@ -2,8 +2,10 @@ class_name Boss extends Node2D
 
 const DEFAULT_PATTERN_RATE= 5
 const DEFAULT_FIRERATE= .02
+
 var patterns = null
 var state
+var health: Health
 
 var bullet = preload("res://src/bullet/Bullet.tscn")
 
@@ -29,6 +31,7 @@ func randomize(variety:int, pattern_time_variance, bullet_rate_variance, difficu
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = $Health
 	state = 0
 	patterns = [RandomPattern.new(self,DEFAULT_PATTERN_RATE,DEFAULT_FIRERATE)]
 	self.randomize(50, 0, 0)
