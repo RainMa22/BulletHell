@@ -9,6 +9,7 @@
 script = ExtResource("1_fdp0l")
 
 [node name="Polygon" type="Polygon2D" parent="."]
+color = Color(0.298039, 1, 1, 1)
 polygon = PackedVector2Array(0, -16, -16, 0, 0, 16, 16, 0)
 
 [node name="Collider" type="CollisionShape2D" parent="."]
