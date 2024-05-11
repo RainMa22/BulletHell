@@ -6,7 +6,7 @@
 bg_color = Color(0.372549, 0.396078, 0.458824, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee0f"]
-bg_color = Color(0.909804, 0.854902, 0.898039, 1)
+bg_color = Color(0.91, 0.91, 0.91, 1)
 
 [node name="RAMBar" type="ProgressBar"]
 offset_right = 512.0

@@ -8,7 +8,7 @@ signal bullet_counter_decreased(new_value)
 var bullet_counter : int = 0:
 	set(val):
 		
-		chaos_value = float(val) / 200 # UPDATE THE CHAOS VALUE with the new value
+		chaos_value = float(val) / 100 # UPDATE THE CHAOS VALUE with the new value
 		
 		if val > bullet_counter:
 			bullet_counter_increased.emit(val) # Increase, emit signal.
