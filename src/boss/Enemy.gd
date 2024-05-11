@@ -37,14 +37,16 @@ func randomize(variety:int, pattern_time_variance, bullet_rate_variance, difficu
 	rng.set_seed(Global.current_boss)
 	
 	for i in range(variety):
-		var num = rng.randi_range(0,3)
 		var pattern_time = time_per_pattern + randf_range(-pattern_time_variance/2,pattern_time_variance/2)
 		var firerate = time_per_bullet + randf_range(-bullet_rate_variance/2,bullet_rate_variance/2)
-		var pattern = Pattern.new(self, 0.2,firerate)
-		if(num == 1):
-			pattern = RandomPattern.new(self,pattern_time,firerate)
-		else:
-			pattern = SpiralPattern.new(self, pattern_time,firerate, 
-			randi_range(SpiralPattern.SPIRAL_MIN, SpiralPattern.SPIRAL_MAX),rng.randi_range(0,1) == 1)
-		patterns.append(pattern)
+		patterns.append(random_pattern(rng,pattern_time,firerate))
 		
+func random_pattern(rng: RandomNumberGenerator, pattern_time, firerate):
+	var num = rng.randi_range(0,3)
+	var pattern = Pattern.new(self, 0.2,firerate)
+	if(num == 1):
+		pattern = RandomPattern.new(self,pattern_time,firerate)
+	else:
+		pattern = SpiralPattern.new(self, pattern_time,firerate, 
+		randi_range(SpiralPattern.SPIRAL_MIN, SpiralPattern.SPIRAL_MAX),rng.randi_range(0,1) == 1)
+	patterns.append(pattern)
