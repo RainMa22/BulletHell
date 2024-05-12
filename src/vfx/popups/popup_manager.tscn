@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3dun6qp36cd4"]
+
+[ext_resource type="Script" path="res://src/vfx/popups/popup_manager.gd" id="1_b241b"]
+[ext_resource type="PackedScene" uid="uid://vllwgau8oq7t" path="res://src/vfx/popups/popup.tscn" id="2_gn360"]
+
+[node name="PopupManager" type="Node2D"]
+script = ExtResource("1_b241b")
+popup_instance = ExtResource("2_gn360")

@@ -27,6 +27,8 @@ var style_manager: StyleManager
 @onready var body: Sprite2D = $Circle2
 @onready var outline: Sprite2D = $Circle
 
+var explosion = preload("res://src/vfx/Explosion.tscn")
+
 # INITALISATION
 func _ready():
 	Global.bullet_counter += 1
@@ -54,7 +56,6 @@ func _process(delta):
 	style_manager._process(delta)
 
 
-
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.
 	if not (screen_notifier.is_on_screen() or disable_on_screen_detection):
@@ -70,6 +71,10 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 func collide_with_body(body):
 	if body.has_method("hit_by_bullet"): # Call the hit method on the body!
 		body.hit_by_bullet(self)
+			
+		var new_explosion = explosion.instantiate()
+		get_parent().add_child(new_explosion)
+		new_explosion.global_position = global_position
 	if should_disappear_after_collision: # Disappear if I should, otherwise rely on I-FRAMES from the body in question.
 		destroy_self()
 
@@ -78,4 +83,5 @@ func collide_with_body(body):
 # DELETING PROCESS
 func destroy_self():
 	Global.bullet_counter -= 1
+	
 	queue_free()

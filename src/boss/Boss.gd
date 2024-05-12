@@ -42,6 +42,7 @@ func _process(delta):
 # HEALTH.
 func hit_by_bullet(bullet : Bullet):
 	health.health -= bullet.damage # Take damage.
+	Global.popup_manager.create_popup(str(bullet.damage), bullet.global_position, bullet.velocity.x)
 	if bullet.allow_invincibility_frames:
 		health.start_invincibility() # Run a invincibility time.
 	
