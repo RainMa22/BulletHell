@@ -16,7 +16,7 @@ func change_style(style = null):
 		var rng = RandomNumberGenerator.new()
 		while(style == current_style):
 			style = Style.values()[rng.randi_range(0,Style.size()-1)]
-			print("changing style to {style}!".format({"style": style}))
+			#print("changing style to {style}!".format({"style": style}))
 	style_change_cooldown += STYLE_CHANGE_INTERVAL
 	current_style = style;
 	style_changed.emit(style)
