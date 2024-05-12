@@ -7,6 +7,9 @@ collision_layer = 16
 collision_mask = 3
 priority = 5
 is_enemy = true
+damage = null
+should_disappear_after_collision = null
+allow_invincibility_frames = null
 
 [node name="Circle" parent="." index="0"]
 modulate = Color(0.909804, 0.282353, 0.278431, 1)

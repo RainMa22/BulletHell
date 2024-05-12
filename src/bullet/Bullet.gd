@@ -9,8 +9,6 @@ class_name Bullet extends Area2D
 
 # TODO: Different visual styles/speeds/variations for bullets, different visuals corresponding to different effects.
 
-@export var is_enemy := false
-
 # Damage stats!
 
 @export var damage := 1

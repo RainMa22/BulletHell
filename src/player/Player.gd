@@ -20,7 +20,8 @@ var acceleration : float = 1800
 var deceleration : float = 1500
 
 # SHOOTING
-var bullet = preload("res://src/bullet/PlayerBullet.tscn")
+#var bullet = preload("res://src/bullet/PlayerBullet.tscn")
+var bullet = preload("res://src/bullet/DoodleBullet.tscn")
 var can_shoot := true
 var shoot_cooldown = 0.2 # in seconds
 
@@ -61,7 +62,7 @@ func _on_shoot_timer_timeout():
 	can_shoot = true
 func update_shooting() -> void:
 	if is_shooting and can_shoot and not health.is_dead:
-		var bullet_instance : Bullet = bullet.instantiate() as Bullet # INSTANTIATE A BULLET
+		var bullet_instance : Bullet = bullet.instantiate() #  as Bullet # INSTANTIATE A BULLET
 		
 		bullet_instance.starting_speed = 800 # SET SPEED
 		bullet_instance.starting_direction = global_position.direction_to($BulletSpawnPoint.global_position) # DIRECT IT TOWARDS SOMEWHERE
