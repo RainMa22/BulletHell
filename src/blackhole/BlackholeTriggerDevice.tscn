@@ -1,21 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp5jwmef8sn0a"]
 
-[ext_resource type="Script" path="res://src/bullet/Bullet.gd" id="1_scwiu"]
+[ext_resource type="Script" path="res://src/blackhole/BlackholeTriggerDevice.gd" id="1_dmohn"]
 [ext_resource type="Texture2D" uid="uid://deve7snoj5rrt" path="res://resources/visuals/WhiteCirclex256.png" id="2_ey3w8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvb2s"]
 radius = 8.15
 
-[node name="Bullet" type="Area2D"]
-collision_layer = 24
-collision_mask = 7
-script = ExtResource("1_scwiu")
+[node name="BlackholeTriggerDevice" type="Area2D"]
+position = Vector2(512, 512)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_dmohn")
 
 [node name="Circle" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2)
 scale = Vector2(0.156617, 0.157)
 texture = ExtResource("2_ey3w8")
 
 [node name="Circle2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("2_ey3w8")
 

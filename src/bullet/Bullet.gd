@@ -50,12 +50,12 @@ func _process(delta):
 	# 	global_position.x += 250 + 275
 	style_manager._process(delta)
 
-	if not screen_notifier.is_on_screen():
-		destroy_self()
+	
 
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.
-
+	if not screen_notifier.is_on_screen():
+		destroy_self()
 
 
 # COLLISION WITH BODIES (Player and Bosses, Enemies)
