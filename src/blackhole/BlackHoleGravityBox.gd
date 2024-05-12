@@ -59,7 +59,6 @@ func collide_with_body(body: Bullet, delta):
 	euclid_dist -= event_horizon
 	if euclid_dist <  0:
 		body.velocity = Vector2(0,0)
-		body.visible = false
 		#queue_to_free(body)
 	body.velocity += dist/(euclid_dist**2)*delta
 	
