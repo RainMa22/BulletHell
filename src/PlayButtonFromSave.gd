@@ -10,6 +10,8 @@ func generate_suffix(current_boss):
 		suffix = "st"
 	elif current_boss ==2:
 		suffix = "nd"
+	elif current_boss == 3:
+		suffix = "rd"
 	return suffix
 
 # Called when the node enters the scene tree for the first time.

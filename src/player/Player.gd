@@ -20,8 +20,8 @@ var acceleration : float = 1800
 var deceleration : float = 1500
 
 # SHOOTING
-#var bullet = preload("res://src/bullet/PlayerBullet.tscn")
-var bullet = preload("res://src/bullet/DoodleBullet.tscn")
+var bullet = preload("res://src/bullet/PlayerBullet.tscn")
+#var bullet = preload("res://src/bullet/DoodleBullet.tscn")
 var can_shoot := true
 var shoot_cooldown = 0.2 # in seconds
 

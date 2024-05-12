@@ -21,15 +21,18 @@ var starting_speed := 200
 
 var velocity := Vector2.ZERO
 
+var style_manager: BulletStyleManager
 @onready var screen_notifier : VisibleOnScreenNotifier2D = $OnScreenNotifier
-
-
+@onready var body: Sprite2D = $Circle2
+@onready var outline: Sprite2D = $Circle
 
 # INITALISATION
 func _ready():
 	Global.bullet_counter += 1
-	
 	init_starting_velocity()
+	style_manager = BulletStyleManager.new(body, outline)
+	style_manager.on_style_change()
+	
 func _enter_tree():
 	init_starting_velocity()
 
@@ -45,6 +48,7 @@ func _process(delta):
 	# 	global_position.x -= 250 + 275
 	# elif global_position.x < -275:
 	# 	global_position.x += 250 + 275
+	style_manager._process(delta)
 
 	if not screen_notifier.is_on_screen():
 		destroy_self()

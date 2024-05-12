@@ -1,6 +1,9 @@
 extends Node
 
 var current_boss : int
+enum style {DOODLE,UNKNOWN}
+var current_style: style = style.DOODLE;
+var rng: RandomNumberGenerator;
 
 # BULLET COUNTER GLOBAL PROPERTY
 signal bullet_counter_increased(new_value)
@@ -25,4 +28,5 @@ var bullet_counter : int = 0:
 var chaos_value := 0.0 # A value proportional to the number of bullets on screen.
 
 func _ready():
+	rng = RandomNumberGenerator.new()
 	current_boss = 1
