@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://wuw80b1roaq"]
+[gd_scene load_steps=11 format=3 uid="uid://wuw80b1roaq"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_fg8e7"]
 [ext_resource type="PackedScene" uid="uid://cwn1aknxem4n4" path="res://src/player/Player.tscn" id="1_udpsn"]
 [ext_resource type="PackedScene" uid="uid://cy4gofdhytyvf" path="res://src/boss/Boss.tscn" id="2_4fr0q"]
 [ext_resource type="PackedScene" uid="uid://crodou4hnnv8n" path="res://src/ui/RAMBar.tscn" id="4_oghjs"]
 [ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_8pbe5"]
+[ext_resource type="PackedScene" uid="uid://b3dun6qp36cd4" path="res://src/vfx/popups/popup_manager.tscn" id="6_11fke"]
+[ext_resource type="PackedScene" uid="uid://cspcl0imuvgsx" path="res://src/camera/Camera.tscn" id="7_5lh54"]
 [ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/Music.tscn" id="7_gw7n1"]
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
+[ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="8_khm1l"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fg8e7")
@@ -69,28 +72,12 @@ scale = Vector2(0.99701, 1)
 [node name="Boss" parent="GameContent" instance=ExtResource("2_4fr0q")]
 position = Vector2(250, 784)
 
-[node name="Camera" type="Camera2D" parent="."]
-scale = Vector2(1, 0.991097)
+[node name="PopupManager" parent="GameContent" instance=ExtResource("6_11fke")]
 
-[node name="RAMBar" parent="Camera" instance=ExtResource("4_oghjs")]
-z_index = 100
-offset_left = -344.0
-offset_top = 242.156
-offset_right = 172.35
-offset_bottom = 289.931
-rotation = -1.5708
-metadata/_edit_use_anchors_ = true
-
-[node name="RAM" type="RichTextLabel" parent="Camera"]
-offset_left = -344.0
-offset_top = 250.0
-offset_right = -296.0
-offset_bottom = 274.0
-bbcode_enabled = true
-text = "[center]RAM"
-fit_content = true
+[node name="Camera" parent="." instance=ExtResource("7_5lh54")]
 
 [node name="Result" type="RichTextLabel" parent="."]
+clip_contents = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -102,9 +89,32 @@ offset_right = 248.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 0.392157)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 11
+theme_override_constants/outline_size = 30
+theme_override_fonts/normal_font = ExtResource("8_khm1l")
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
 [node name="Music" parent="." instance=ExtResource("7_gw7n1")]
+
+[node name="RAMBar" parent="." instance=ExtResource("4_oghjs")]
+z_index = 100
+offset_left = -344.0
+offset_top = 242.156
+offset_right = 172.35
+offset_bottom = 289.931
+rotation = -1.5708
+
+[node name="RAM" type="RichTextLabel" parent="."]
+offset_left = -344.0
+offset_top = 250.0
+offset_right = -296.0
+offset_bottom = 274.0
+bbcode_enabled = true
+text = "[center]RAM"
+fit_content = true

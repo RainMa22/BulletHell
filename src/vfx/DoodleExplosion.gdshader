@@ -1,25 +1,21 @@
 shader_type canvas_item;
 
-// DOODLE BULLET LONG
-// Long bullet design that has wiggly outline.
+// DOODLE EXPLOSION
+// Explode!
 
 // COLOURING
 uniform vec4 body_color = vec4(1.); // inner radius
-uniform vec4 rim_color = vec4(0,0,0,1.); // outer radius
+uniform vec4 rim_color = vec4(0,0,0,0); // outer radius
 uniform vec4 outline_color = vec4(0,0,0,1.); // the circle around it
 
 // NOISE
 uniform float change_frequency = 5.0;
 uniform float ID = 1.;
 
-// DIMENSIONS
-uniform float body_x_radius_percentage = 0.15;
-uniform float body_y_radius_percentage = 0.01;
+// RADIUS
+uniform float body_radius_percentage = 0.35;
 
-uniform float rim_radius_percentage = 0.05;
-
-uniform float outline_extrusion_percentage = 0.05;
-uniform float outline_radius_percentage = 0.08;
+uniform float scale = 1.0;
 
 // MATHEMATIQUES
 // RANDOM GENERATOR
@@ -69,22 +65,12 @@ void fragment() {
 	
 	
 	// UV Percentages
-	float max_body_x = body_x_radius_percentage + noise(variant_num*7.)/20. + offset;
-	float max_body_y = body_y_radius_percentage + noise(variant_num*7.)/20. + offset;
+	float max_body = body_radius_percentage + noise(variant_num*7.)/20. + offset;
 	
-	float max_rim_x = max_body_x + rim_radius_percentage + noise(variant_num*13.)/40. + offset2;
-	float max_rim_y = max_body_y + rim_radius_percentage + noise(variant_num*13.)/40. + offset2;
-	
-	if(abs(x) < max_body_x && abs(y) < max_body_y) { // BODY
+	if(radius < max_body * scale) { // BODY
 		COLOR = body_color;
-	} else if (abs(x) < max_rim_x && abs(y) < max_rim_y) {
+	} else if (radius < (max_body) * scale + 0.01) {
 		COLOR = rim_color;
-	} else if ((abs(x) < max_rim_x + outline_extrusion_percentage + outline_radius_percentage && abs(x) > max_rim_x + outline_extrusion_percentage)
-				&& abs(y) < max_rim_y + outline_extrusion_percentage + outline_radius_percentage) {
-		COLOR = outline_color;
-	} else if ((abs(y) < max_rim_y + outline_extrusion_percentage + outline_radius_percentage && abs(y) > max_rim_y + outline_extrusion_percentage)
-				&& abs(x) < max_rim_x + outline_extrusion_percentage + outline_radius_percentage) {
-		COLOR = outline_color;
 	} else { // TRANSPARENCY
 		COLOR = vec4(0.);
 	}

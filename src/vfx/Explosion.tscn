@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxdf64pl6qfec"]
+
+[ext_resource type="Script" path="res://src/vfx/Explosion.gd" id="1_mx2g4"]
+[ext_resource type="Shader" path="res://src/vfx/DoodleExplosion.gdshader" id="2_3by7x"]
+[ext_resource type="Texture2D" uid="uid://deve7snoj5rrt" path="res://resources/visuals/WhiteCirclex256.png" id="2_v1bh0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whwge"]
+shader = ExtResource("2_3by7x")
+shader_parameter/body_color = Vector4(1, 1, 1, 1)
+shader_parameter/rim_color = Vector4(0, 0, 0, 1)
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
+shader_parameter/change_frequency = 1.0
+shader_parameter/ID = 1.0
+shader_parameter/body_radius_percentage = 0.15
+shader_parameter/scale = 1.0
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_mx2g4")
+
+[node name="Circle" type="Sprite2D" parent="."]
+z_index = 500
+texture_filter = 1
+material = SubResource("ShaderMaterial_whwge")
+position = Vector2(1, -1)
+texture = ExtResource("2_v1bh0")

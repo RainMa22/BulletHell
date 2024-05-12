@@ -7,8 +7,6 @@ class_name Game extends Node2D
 # Main game logic, general organisation for gameplay exclusive. #
 #################################################################
 
-
-
 var player : Player
 var boss : Boss
 

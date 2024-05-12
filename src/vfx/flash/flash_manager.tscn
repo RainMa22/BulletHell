@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgihimqpr54ri"]
+
+[ext_resource type="Script" path="res://src/vfx/flash/flash_manager.gd" id="1_c5idg"]
+[ext_resource type="Shader" path="res://src/vfx/flash/flash.gdshader" id="2_quxjj"]
+
+[node name="FlashManager" type="Node"]
+script = ExtResource("1_c5idg")
+flashShader = ExtResource("2_quxjj")
