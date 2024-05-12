@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://jrorvg5viv15"]
+[gd_scene load_steps=3 format=3 uid="uid://jrorvg5viv15"]
 
 [ext_resource type="PackedScene" uid="uid://cs8lnupepor0n" path="res://src/bullet/Bullet.tscn" id="1_bg76o"]
+[ext_resource type="Script" path="res://src/bullet/PlayerBullet.gd" id="2_xhdd1"]
 
 [node name="PlayerBullet" instance=ExtResource("1_bg76o")]
 collision_layer = 8
 collision_mask = 5
+script = ExtResource("2_xhdd1")
 allow_invincibility_frames = false
 
 [node name="Circle" parent="." index="0"]

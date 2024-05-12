@@ -39,6 +39,7 @@ func _enter_tree():
 
 func init_starting_velocity() -> void:
 	velocity = starting_speed * starting_direction # Set the velocity upon entering the tree.
+	look_at(global_position + velocity * 10.)
 
 
 
@@ -49,9 +50,10 @@ func _process(delta):
 	# 	global_position.x -= 250 + 275
 	# elif global_position.x < -275:
 	# 	global_position.x += 250 + 275
+	look_at(global_position + velocity * 10.)
 	style_manager._process(delta)
 
-	
+
 
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.
