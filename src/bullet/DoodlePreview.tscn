@@ -6,6 +6,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mtff5"]
 shader = ExtResource("2_r6mdi")
+shader_parameter/body_color = Vector4(1, 1, 1, 1)
+shader_parameter/rim_color = Vector4(0, 0, 0, 1)
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
+shader_parameter/change_frequency = 1.0
+shader_parameter/ID = 1.0
+shader_parameter/body_radius_percentage = 0.1
+shader_parameter/rim_radius_percentage = 0.3
+shader_parameter/outline_extrusion_percentage = 0.05
+shader_parameter/outline_radius_percentage = 0.05
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvb2s"]
 radius = 8.15

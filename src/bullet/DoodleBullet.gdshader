@@ -13,11 +13,12 @@ uniform float change_frequency = 1.0;
 uniform float ID = 1.;
 
 // RADIUS
-uniform float body_radius_percentage = 0.1;
+uniform float body_radius_percentage = 0.15;
 uniform float rim_radius_percentage = 0.3;
 uniform float outline_extrusion_percentage = 0.05;
-uniform float outline_radius_percentage = 0.05;
+uniform float outline_radius_percentage = 0.08;
 
+// MATHEMATIQUES
 // RANDOM GENERATOR
 float rand(float x){
 	return fract(sin(dot(x,0.1))*43758.5453);
@@ -55,37 +56,29 @@ void fragment() {
 	float radius = sqrt(x*x + y*y);
 	float theta = (atan(y,x));
 	
+	// Variation calculations
 	float alpha = 1.0;
-	float variant_num = floor(TIME*changes_per_second + ID);
-	
-	float interior_outline_noise = noise(variant_num*7.)/20.;
-	
-	float body = outline_inner_percentage + interior_outline_noise;
-	
-	float exterior_outline_noise = noise(variant_num*13.)/40.;
-	float outline_size = outline_outer_percentage + exterior_outline_noise;
+	float variant_num = floor(TIME * change_frequency + ID);
 	
 	float offset = (noise(sin(theta*2.)*TAU-variant_num*7.))/10.;
 	float offset2 = (noise(sin(theta*1.5)*TAU-variant_num*13.))/16.;
 	
-	float min_outline_rim_radius = outline_size + exterior_rim_extrusion_percentage + offset2;
-	float max_outline_rim_radius = outline_size + exterior_rim_extrusion_percentage + exterior_rim_width_percentage + offset2;
 	
-	// Radius less than body range
-	if(radius < body + offset){
+	
+	// UV Percentages
+	float max_body = body_radius_percentage + noise(variant_num*7.)/20. + offset;
+	float max_rim = rim_radius_percentage + noise(variant_num*13.)/40. + offset2;
+	
+	float min_outline = max_rim + outline_extrusion_percentage;
+	float max_outline = max_rim + outline_extrusion_percentage + outline_radius_percentage;
+	
+	if(radius < max_body) { // BODY
 		COLOR = body_color;
-	} else if (radius < outline_size + offset2){ // Radius less than outline range
-		//alpha = 1.0;
+	} else if (radius < max_rim) { // RIM
+		COLOR = rim_color;
+	} else if (radius < max_outline && radius > min_outline) { // OUTLINE
 		COLOR = outline_color;
-	} else if (radius < max_outline_rim_radius && radius > min_outline_rim_radius) {
-		COLOR = exterior_rim_color;
-	} else {
+	} else { // TRANSPARENCY
 		COLOR = vec4(0.);
 	}
-	//COLOR = vec4(UV, 1, 1);
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
