@@ -8,6 +8,8 @@
 shader = ExtResource("2_r6mdi")
 shader_parameter/color = Vector4(1, 1, 1, 1)
 shader_parameter/outline = Vector4(0, 0, 0, 1)
+shader_parameter/changes_per_second = 1.0
+shader_parameter/ID = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvb2s"]
 radius = 8.15

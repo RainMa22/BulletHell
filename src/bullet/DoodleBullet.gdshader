@@ -2,6 +2,8 @@ shader_type canvas_item;
 
 uniform vec4 color = vec4(1.);
 uniform vec4 outline = vec4(0,0,0,1.);
+uniform float changes_per_second = 1.0;
+uniform float ID = 1.;
 
 float rand(float x){
 	return fract(sin(dot(x,0.1))*43758.5453);
@@ -19,7 +21,7 @@ float cosine_interpolation(float a, float b, float dist_from_a, float size){
 
 //1 - dimension perlin - sort-of
 float smoothrand(float x){
-	float size = 1.;
+	float size = 2.;
 	
 	float a_point = floor(x/size)*size;
 	float dist_from_a = x - a_point;
@@ -41,12 +43,15 @@ void fragment() {
 	float theta = (atan(y,x));
 	
 	float alpha = 1.0;
-	float offset = (noise(theta+0.1+TIME)-.5)/10.;
-	float offset2 = (noise(theta+0.1-TIME)-.5)/16.;
-	if(radius < .3 + offset){
+	float variant_num = floor(TIME*changes_per_second + ID);
+	float body = .2 + noise(variant_num*7.)/20.;
+	float outline_size = .4 + noise(variant_num*13.)/40.;
+	float offset = (noise(sin(theta*2.)*TAU-variant_num*7.))/10.;
+	float offset2 = (noise(sin(theta*1.5)*TAU-variant_num*13.))/16.;
+	if(radius < body + offset){
 		COLOR = color;
 	
-	} else if(radius < .45 + offset2){
+	} else if(radius < outline_size + offset2){
 		//alpha = 1.0;
 		COLOR = outline;
 	} else {
