@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://4fk7gv47e2my"]
+[gd_scene load_steps=6 format=3 uid="uid://dctegu3wj6dlw"]
 
 [ext_resource type="Script" path="res://src/bullet/Bullet.gd" id="1_v71c8"]
 [ext_resource type="Shader" path="res://src/bullet/DoodleBulletLong.gdshader" id="2_icgxs"]

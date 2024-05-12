@@ -1,5 +1,7 @@
 extends Node
 
+const BLACKHOLE_TRIGGER_DEVICE = preload("res://src/blackhole/BlackholeTriggerDevice.tscn")
+
 var current_boss : int
 enum Style {DOODLE=0, REGULAR=1}
 var current_style: Style = Style.DOODLE;
@@ -7,20 +9,27 @@ var current_time: float;
 
 #STYLE MANAGEMENT
 signal style_changed(new_style)
-@onready var style_change_cooldown = 0;
-const STYLE_CHANGE_INTERVAL = 3.;
 func change_style(style = null):
-	if style_change_cooldown > 0 : return
 	if style == null:
 		style = current_style
 		var rng = RandomNumberGenerator.new()
 		while(style == current_style):
 			style = Style.values()[rng.randi_range(0,Style.size()-1)]
 			#print("changing style to {style}!".format({"style": style}))
-	style_change_cooldown += STYLE_CHANGE_INTERVAL
 	current_style = style;
 	style_changed.emit(style)
 
+#BLACKHOLE
+func summon_blackhole(parent:Node = get_tree().get_root()):
+	var blackhole = BLACKHOLE_TRIGGER_DEVICE.instantiate()
+	blackhole.set_target(Vector2(0,0))
+	parent.add_child(blackhole)
+
+#ON RAM FULL
+func _on_ram_full():
+	summon_blackhole()
+	change_style()
+	
 
 # BULLET COUNTER GLOBAL PROPERTY
 signal bullet_counter_increased(new_value)
@@ -50,4 +59,3 @@ func _ready():
 
 func _process(delta):
 	current_time += delta
-	style_change_cooldown = max(0, style_change_cooldown - delta)

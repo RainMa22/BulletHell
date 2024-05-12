@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://biuroovl4fce1"]
+[gd_scene load_steps=6 format=3 uid="uid://drcdnyhtvbs80"]
 
 [ext_resource type="Script" path="res://src/bullet/Bullet.gd" id="1_1a1bv"]
 [ext_resource type="Texture2D" uid="uid://deve7snoj5rrt" path="res://resources/visuals/WhiteCirclex256.png" id="2_mftt0"]
