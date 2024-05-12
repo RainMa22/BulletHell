@@ -74,6 +74,9 @@ func update_shooting() -> void:
 		get_parent().add_child(new_explosion)
 		new_explosion.global_position = $BulletSpawnPoint.global_position
 		
+		CameraShake.kick(Vector2.DOWN * 5.0)
+		CameraShake.add_trauma(0.01)
+		
 		bullet_instance.global_position = $BulletSpawnPoint.global_position # Spawn bullet at that point. # SET POSITION TO SPAWN POINT
 		
 		can_shoot = false # COOLDOWN!
@@ -107,6 +110,7 @@ func update_physics_movement(delta) -> void:
 func hit_by_bullet(bullet : Bullet):
 	health.health -= bullet.damage # Take the damage.
 	Global.popup_manager.create_popup(str(bullet.damage), bullet.global_position, bullet.velocity.x)
+	CameraShake.add_trauma(0.2)
 	if bullet.allow_invincibility_frames:
 		health.start_invincibility() # Run a invincibility time.
 		
@@ -115,4 +119,6 @@ func hit_by_bullet(bullet : Bullet):
 
 # DEATH.
 func _on_health_on_died():
+	CameraShake.kick(Vector2.DOWN * 10.0)
+	CameraShake.add_trauma(0.5)
 	queue_free()

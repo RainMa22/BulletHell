@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://src/global/Global.gd"
 ConfigManager="*res://src/config/ConfigGlobal.gd"
+CameraShake="*res://src/camera/CameraShake.gd"
 
 [display]
 
