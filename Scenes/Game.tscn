@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wuw80b1roaq"]
+[gd_scene load_steps=10 format=3 uid="uid://wuw80b1roaq"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_fg8e7"]
 [ext_resource type="PackedScene" uid="uid://cwn1aknxem4n4" path="res://src/player/Player.tscn" id="1_udpsn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b3dun6qp36cd4" path="res://src/vfx/popups/popup_manager.tscn" id="6_11fke"]
 [ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/Music.tscn" id="7_gw7n1"]
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
+[ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="8_khm1l"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fg8e7")
@@ -94,6 +95,7 @@ text = "[center]RAM"
 fit_content = true
 
 [node name="Result" type="RichTextLabel" parent="."]
+clip_contents = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -105,6 +107,10 @@ offset_right = 248.0
 offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/normal_font = ExtResource("8_khm1l")
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 fit_content = true

@@ -19,6 +19,7 @@ script = ExtResource("1_mx2g4")
 
 [node name="Circle" type="Sprite2D" parent="."]
 z_index = 500
+texture_filter = 1
 material = SubResource("ShaderMaterial_whwge")
 position = Vector2(1, -1)
 texture = ExtResource("2_v1bh0")

@@ -5,7 +5,7 @@ shader_type canvas_item;
 
 // COLOURING
 uniform vec4 body_color = vec4(1.); // inner radius
-uniform vec4 rim_color = vec4(0,0,0,1.); // outer radius
+uniform vec4 rim_color = vec4(0,0,0,0); // outer radius
 uniform vec4 outline_color = vec4(0,0,0,1.); // the circle around it
 
 // NOISE
@@ -69,7 +69,7 @@ void fragment() {
 	
 	if(radius < max_body * scale) { // BODY
 		COLOR = body_color;
-	} else if (radius < (max_body + 0.02) * scale) {
+	} else if (radius < (max_body) * scale + 0.02) {
 		COLOR = rim_color;
 	} else { // TRANSPARENCY
 		COLOR = vec4(0.);

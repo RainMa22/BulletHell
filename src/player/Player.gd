@@ -21,6 +21,7 @@ var deceleration : float = 1500
 
 # SHOOTING
 var bullet = preload("res://src/bullet/PlayerBullet.tscn")
+var explosion = preload("res://src/vfx/Explosion.tscn")
 #var bullet = preload("res://src/bullet/DoodleBullet.tscn")
 var can_shoot := true
 var shoot_cooldown = 0.2 # in seconds
@@ -68,6 +69,10 @@ func update_shooting() -> void:
 		bullet_instance.starting_direction = global_position.direction_to($BulletSpawnPoint.global_position) # DIRECT IT TOWARDS SOMEWHERE
 		
 		get_parent().add_child(bullet_instance) # ADD TO TREE
+		
+		var new_explosion = explosion.instantiate()
+		get_parent().add_child(new_explosion)
+		new_explosion.global_position = $BulletSpawnPoint.global_position
 		
 		bullet_instance.global_position = $BulletSpawnPoint.global_position # Spawn bullet at that point. # SET POSITION TO SPAWN POINT
 		
