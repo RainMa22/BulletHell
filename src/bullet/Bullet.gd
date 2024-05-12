@@ -14,6 +14,7 @@ class_name Bullet extends Area2D
 @export var damage := 1
 @export var should_disappear_after_collision := true
 @export var allow_invincibility_frames := true
+@export var disable_on_screen_detection := false
 
 # Remember to set position, direction, and speed!
 var starting_direction := Vector2.UP
@@ -21,7 +22,7 @@ var starting_speed := 200
 
 var velocity := Vector2.ZERO
 
-var style_manager: BulletStyleManager
+var style_manager: StyleManager
 @onready var screen_notifier : VisibleOnScreenNotifier2D = $OnScreenNotifier
 @onready var body: Sprite2D = $Circle2
 @onready var outline: Sprite2D = $Circle
@@ -54,7 +55,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	position += velocity * delta # Adding to position to move the bullet in linear fashion.
-	if not screen_notifier.is_on_screen():
+	if not (screen_notifier.is_on_screen() or disable_on_screen_detection):
 		destroy_self()
 
 
