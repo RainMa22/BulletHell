@@ -74,7 +74,7 @@ func update_shooting() -> void:
 		get_parent().add_child(new_explosion)
 		new_explosion.global_position = $BulletSpawnPoint.global_position
 		
-		CameraShake.kick(Vector2.DOWN * 5.0)
+		CameraShake.kick(Vector2.DOWN * 3.2)
 		CameraShake.add_trauma(0.01)
 		
 		bullet_instance.global_position = $BulletSpawnPoint.global_position # Spawn bullet at that point. # SET POSITION TO SPAWN POINT
