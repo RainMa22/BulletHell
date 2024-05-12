@@ -1,25 +1,34 @@
 shader_type canvas_item;
 
-uniform vec4 color = vec4(1.);
-uniform vec4 outline = vec4(0,0,0,1.);
-uniform float changes_per_second = 1.0;
+// DOODLE BULLET
+// Circular bullet design that has wiggly outline.
+
+// COLOURING
+uniform vec4 body_color = vec4(1.); // inner radius
+uniform vec4 rim_color = vec4(0,0,0,1.); // outer radius
+uniform vec4 outline_color = vec4(0,0,0,1.); // the circle around it
+
+// NOISE
+uniform float change_frequency = 1.0;
 uniform float ID = 1.;
 
+// RADIUS
+uniform float body_radius_percentage = 0.1;
+uniform float rim_radius_percentage = 0.3;
+uniform float outline_extrusion_percentage = 0.05;
+uniform float outline_radius_percentage = 0.05;
+
+// RANDOM GENERATOR
 float rand(float x){
 	return fract(sin(dot(x,0.1))*43758.5453);
-	//return fract(sin(dot(x,rand_val)));
 }
-
-
-
+// COSINE INTERPOLATION IMPLEMENTATION
 float cosine_interpolation(float a, float b, float dist_from_a, float size){
 	float x = dist_from_a/size;
 	float x2 =(1.0-cos(PI*x))/2.;
 	return a*(1.-x2)+b*(x2);
-	//return (a-b)*x;
 }
-
-//1 - dimension perlin - sort-of
+// 1 - dimension perlin - sort-of
 float smoothrand(float x){
 	float size = 2.;
 	
@@ -31,12 +40,16 @@ float smoothrand(float x){
 
 	return cosine_interpolation(abs(a_y),abs(b_y),dist_from_a, size);
 }
-
+// NOISE
 float noise(float x) {
 	return (smoothrand(x)+smoothrand(x*1.1)+smoothrand(x*0.9))/3.;
 }
 
+
+
+// MAIN COLOUR SHADER
 void fragment() {
+	// UV and RADIUS, THETA calculations
 	float x = UV.x-.5;
 	float y = UV.y-.5;
 	float radius = sqrt(x*x + y*y);
@@ -44,16 +57,28 @@ void fragment() {
 	
 	float alpha = 1.0;
 	float variant_num = floor(TIME*changes_per_second + ID);
-	float body = .2 + noise(variant_num*7.)/20.;
-	float outline_size = .4 + noise(variant_num*13.)/40.;
+	
+	float interior_outline_noise = noise(variant_num*7.)/20.;
+	
+	float body = outline_inner_percentage + interior_outline_noise;
+	
+	float exterior_outline_noise = noise(variant_num*13.)/40.;
+	float outline_size = outline_outer_percentage + exterior_outline_noise;
+	
 	float offset = (noise(sin(theta*2.)*TAU-variant_num*7.))/10.;
 	float offset2 = (noise(sin(theta*1.5)*TAU-variant_num*13.))/16.;
-	if(radius < body + offset){
-		COLOR = color;
 	
-	} else if(radius < outline_size + offset2){
+	float min_outline_rim_radius = outline_size + exterior_rim_extrusion_percentage + offset2;
+	float max_outline_rim_radius = outline_size + exterior_rim_extrusion_percentage + exterior_rim_width_percentage + offset2;
+	
+	// Radius less than body range
+	if(radius < body + offset){
+		COLOR = body_color;
+	} else if (radius < outline_size + offset2){ // Radius less than outline range
 		//alpha = 1.0;
-		COLOR = outline;
+		COLOR = outline_color;
+	} else if (radius < max_outline_rim_radius && radius > min_outline_rim_radius) {
+		COLOR = exterior_rim_color;
 	} else {
 		COLOR = vec4(0.);
 	}

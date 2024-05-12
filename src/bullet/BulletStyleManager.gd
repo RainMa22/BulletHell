@@ -25,10 +25,11 @@ func doodle_style() -> void:
 	outline_material = outline_node.material
 	outline_node.material = styleMaterial
 	styleMaterial.set_shader(DOODLE)
-	styleMaterial.set_shader_parameter("color", get_body_color())
-	styleMaterial.set_shader_parameter("outline", get_outline_color())
+	styleMaterial.set_shader_parameter("body_color", get_body_color())
+	styleMaterial.set_shader_parameter("outline_color", get_outline_color())
+	styleMaterial.set_shader_parameter("exterior_rim_color", get_outline_color())
 	styleMaterial.set_shader_parameter("ID", Global.current_time)
-	styleMaterial.set_shader_parameter("changes_per_second", 1.0)
+	styleMaterial.set_shader_parameter("changes_per_second", 5)
 
 func default_style() -> void:
 	body_node.visible = true;
