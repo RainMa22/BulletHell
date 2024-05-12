@@ -22,7 +22,10 @@ texture = ExtResource("2_tjnmu")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qvb2s")
 
+[node name="ExpireTimer" type="Timer" parent="."]
+
 [node name="OnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-15, -15, 30, 30)
 
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]
 [connection signal="screen_exited" from="OnScreenNotifier" to="." method="_on_on_screen_notifier_screen_exited"]
