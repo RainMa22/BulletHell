@@ -70,7 +70,7 @@ void fragment() {
 	
 	// UV Percentages
 	float max_body_x = body_x_radius_percentage + noise(variant_num*7.)/20. + offset;
-	float max_body_y = body_y_radius_percentage + noise(variant_num*7.)/20. + offset * (-x/0.9);
+	float max_body_y = (body_y_radius_percentage + noise(variant_num*7.)/20. + offset) * (-x/0.2);
 	
 	float max_rim_x = max_body_x + rim_radius_percentage + noise(variant_num*13.)/40. + offset2;
 	float max_rim_y = max_body_y + rim_radius_percentage + noise(variant_num*13.)/40. + offset2;

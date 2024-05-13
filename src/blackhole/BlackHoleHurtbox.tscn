@@ -13,12 +13,12 @@ collision_mask = 24
 script = ExtResource("1_g80gu")
 
 [node name="Circle" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.133333, 0.137255, 0.137255, 1)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_j2uxc")
 
 [node name="Circle2" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.133333, 0.137255, 0.137255, 1)
 texture = ExtResource("2_j2uxc")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

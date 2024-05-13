@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://src/ui/RAMBar.gd" id="1_bqt02"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lehv8"]
-bg_color = Color(0.372549, 0.396078, 0.458824, 1)
+bg_color = Color(0.133333, 0.137255, 0.137255, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee0f"]
-bg_color = Color(0.91, 0.91, 0.91, 1)
+bg_color = Color(0.941176, 0.964706, 0.941176, 1)
 
 [node name="RAMBar" type="ProgressBar"]
-offset_right = 512.0
-offset_bottom = 128.0
+offset_top = -400.0
+offset_right = 64.0
 theme_override_styles/background = SubResource("StyleBoxFlat_lehv8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gee0f")
 max_value = 1.0
 step = 0.001
-show_percentage = false
+fill_mode = 3
 script = ExtResource("1_bqt02")

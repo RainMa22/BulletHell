@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wuw80b1roaq"]
+[gd_scene load_steps=14 format=3 uid="uid://wuw80b1roaq"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_fg8e7"]
 [ext_resource type="PackedScene" uid="uid://cwn1aknxem4n4" path="res://src/player/Player.tscn" id="1_udpsn"]
@@ -11,6 +11,68 @@
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
 [ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="8_khm1l"]
 
+[sub_resource type="Animation" id="Animation_ahhyy"]
+resource_name = "teeter"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-248, -32), Vector2(-248, -50.73), Vector2(-248, -32)]
+}
+
+[sub_resource type="Animation" id="Animation_nxp4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-248, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a021h"]
+_data = {
+"RESET": SubResource("Animation_nxp4p"),
+"teeter": SubResource("Animation_ahhyy")
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fg8e7")
 
@@ -19,6 +81,7 @@ format = 2
 
 [node name="Black" type="Sprite2D" parent="."]
 modulate = Color(0.133333, 0.137255, 0.137255, 1)
+z_index = -100
 scale = Vector2(100, 100)
 texture = ExtResource("5_8pbe5")
 
@@ -39,13 +102,15 @@ grow_vertical = 2
 
 [node name="Bg" type="Sprite2D" parent="GameContent"]
 modulate = Color(0.941176, 0.964706, 0.941176, 1)
+z_index = -2
 position = Vector2(250, 1000)
 scale = Vector2(10000, 10000)
 texture = ExtResource("5_8pbe5")
 
 [node name="BackgroundGrid2" parent="GameContent" instance=ExtResource("7_rkqf8")]
+z_index = -2
 position = Vector2(250, 1016)
-dot_color = Color(0.847059, 0.847059, 0.847059, 1)
+dot_color = Color(0.882353, 0.901961, 0.882353, 1)
 dot_radius = 4
 width = 600.0
 height = 800.0
@@ -55,8 +120,9 @@ parallax_x_factor = -1
 time_for_one_x_delta_scroll = 7.0
 
 [node name="BackgroundGrid" parent="GameContent" instance=ExtResource("7_rkqf8")]
+z_index = -2
 position = Vector2(250, 1000)
-dot_color = Color(0.709804, 0.709804, 0.709804, 1)
+dot_color = Color(0.823529, 0.839216, 0.823529, 1)
 dot_radius = 4
 width = 600.0
 height = 800.0
@@ -77,6 +143,7 @@ position = Vector2(250, 784)
 [node name="Camera" parent="." instance=ExtResource("7_5lh54")]
 
 [node name="Result" type="RichTextLabel" parent="."]
+z_index = 2000
 clip_contents = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,12 +153,13 @@ anchor_bottom = 0.5
 offset_left = -248.0
 offset_top = -32.0
 offset_right = 248.0
-offset_bottom = 92.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+pivot_offset = Vector2(248, 24)
+theme_override_colors/default_color = Color(0.941176, 0.964706, 0.941176, 1)
 theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 0.392157)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.137255, 0.137255, 1)
 theme_override_constants/shadow_offset_y = 11
 theme_override_constants/outline_size = 30
 theme_override_fonts/normal_font = ExtResource("8_khm1l")
@@ -100,21 +168,32 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Result"]
+libraries = {
+"": SubResource("AnimationLibrary_a021h")
+}
+autoplay = "teeter"
+
 [node name="Music" parent="." instance=ExtResource("7_gw7n1")]
 
-[node name="RAMBar" parent="." instance=ExtResource("4_oghjs")]
-z_index = 100
-offset_left = -344.0
-offset_top = 242.156
-offset_right = 172.35
-offset_bottom = 289.931
-rotation = -1.5708
-
 [node name="RAM" type="RichTextLabel" parent="."]
-offset_left = -344.0
-offset_top = 250.0
-offset_right = -296.0
-offset_bottom = 274.0
+z_index = 2000
+clip_contents = false
+offset_left = -368.0
+offset_top = 256.0
+offset_right = -272.308
+offset_bottom = 320.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = ExtResource("8_khm1l")
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "[center]RAM"
 fit_content = true
+
+[node name="RAMBar" parent="." instance=ExtResource("4_oghjs")]
+offset_left = -352.0
+offset_top = -176.0
+offset_right = -288.0
+offset_bottom = 224.0

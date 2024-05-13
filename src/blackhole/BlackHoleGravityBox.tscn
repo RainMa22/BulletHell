@@ -21,7 +21,8 @@ shape = SubResource("CircleShape2D_qvb2s")
 rect = Rect2(-15, -15, 30, 30)
 
 [node name="Visual" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.2)
+modulate = Color(0.941176, 0.964706, 0.941176, 1)
+z_index = -1
 texture = ExtResource("2_wm5pq")
 
 [connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]

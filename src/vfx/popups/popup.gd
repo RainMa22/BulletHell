@@ -20,7 +20,7 @@ func _process(delta):
 	
 	# Y VELOCITY
 	y_velocity -= delta * 30
-	global_position += Vector2(x_velocity * 0.25, -y_velocity * 3.0) * delta
+	global_position += Vector2(x_velocity * 0.02, -y_velocity * 3.0) * delta
 
 	time_passed += delta
 	if time_passed > time_before_fade:

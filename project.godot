@@ -13,7 +13,9 @@ config_version=5
 config/name="BulletHell"
 run/main_scene="res://scenes/Title.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.133333, 0.137255, 0.137255, 1)
 config/icon="res://icon.svg"
+config/quality/use_taa=false
 
 [autoload]
 
@@ -142,3 +144,6 @@ Shoot={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=1
