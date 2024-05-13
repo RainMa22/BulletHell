@@ -12,7 +12,7 @@ collision_mask = 7
 script = ExtResource("1_lnk00")
 
 [node name="Circle" type="Sprite2D" parent="."]
-scale = Vector2(0.156617, 0.157)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_tjnmu")
 
 [node name="Circle2" type="Sprite2D" parent="."]

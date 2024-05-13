@@ -1,6 +1,6 @@
 class_name BulletStyleManager extends StyleManager
 
-const DOODLE: Shader = preload("res://src/bullet/DoodleBullet.gdshader")
+const DOODLE: Shader = preload("res://src/bullet/DoodleBulletPointy.gdshader")
 
 var body_node: Sprite2D
 var outline_node:Sprite2D

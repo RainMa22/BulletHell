@@ -69,7 +69,7 @@ void fragment() {
 	
 	if(radius < max_body * scale) { // BODY
 		COLOR = body_color;
-	} else if (radius < (max_body) * scale + 0.01) {
+	} else if (radius < (max_body + 0.01) * scale) {
 		COLOR = rim_color;
 	} else { // TRANSPARENCY
 		COLOR = vec4(0.);

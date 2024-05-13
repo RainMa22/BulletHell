@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://g8isddkkro7e"]
+[gd_scene load_steps=6 format=3 uid="uid://g8isddkkro7e"]
 
 [ext_resource type="Script" path="res://src/PlayButtonFromSave.gd" id="1_uj2od"]
 [ext_resource type="Script" path="res://src/PlayButtonFromNew.gd" id="2_mh1gu"]
 [ext_resource type="PackedScene" uid="uid://bhc0ufx4ih1rd" path="res://src/ui/VolumerSlider.tscn" id="3_4g5jl"]
+[ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="4_j8hik"]
+[ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_ut4ip"]
 
 [node name="Title" type="Node2D"]
 
@@ -17,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayFromSave" type="Button" parent="Control"]
+modulate = Color(0.941176, 0.964706, 0.941176, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,6 +32,8 @@ offset_right = 245.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/icon_normal_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_j8hik")
 text = "Play From Save ({current_boss}-{suffix} boss)"
 script = ExtResource("1_uj2od")
 
@@ -45,6 +50,7 @@ offset_right = 244.0
 offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8hik")
 text = "Play New"
 script = ExtResource("2_mh1gu")
 
@@ -52,9 +58,13 @@ script = ExtResource("2_mh1gu")
 clip_contents = false
 layout_mode = 0
 offset_left = -240.0
-offset_top = -256.0
+offset_top = -208.0
 offset_right = 239.0
-offset_bottom = -159.0
+offset_bottom = -111.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 35
+theme_override_fonts/normal_font = ExtResource("4_j8hik")
 theme_override_font_sizes/normal_font_size = 71
 text = "computer hell"
 fit_content = true
@@ -62,3 +72,10 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0.133333, 0.137255, 0.137255, 1)
+z_index = -2
+position = Vector2(248, 1000)
+scale = Vector2(10000, 10000)
+texture = ExtResource("5_ut4ip")
