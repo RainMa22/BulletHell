@@ -13,7 +13,7 @@ shader_parameter/strength = 1.0
 shader_parameter/ratio = Vector2(1, 1)
 shader_parameter/offset = Vector2(1, 1)
 
-[node name="DoodleBlackhole" type="Area2D"]
+[node name="RegularBlackhole" type="Area2D"]
 material = SubResource("ShaderMaterial_rausl")
 position = Vector2(400, 300)
 collision_layer = 32
