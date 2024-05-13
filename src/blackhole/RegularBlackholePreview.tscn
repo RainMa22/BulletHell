@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dml1qylvrnw6m"]
+
+[ext_resource type="Shader" path="res://src/blackhole/RegularBlackhole.gdshader" id="1_4fddd"]
+[ext_resource type="Script" path="res://src/blackhole/Blackhole.gd" id="2_djsxo"]
+[ext_resource type="PackedScene" uid="uid://1kt7u71uwshe" path="res://src/blackhole/BlackHoleHurtbox.tscn" id="3_8rv6t"]
+[ext_resource type="PackedScene" uid="uid://dw2y3v8nyx45i" path="res://src/blackhole/BlackHoleGravityBox.tscn" id="4_a1edu"]
+[ext_resource type="Texture2D" uid="uid://bwacrjxrqsel4" path="res://icon.svg" id="5_35awd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rausl"]
+shader = ExtResource("1_4fddd")
+shader_parameter/event_horizon = 0.3
+shader_parameter/strength = 1.0
+shader_parameter/ratio = Vector2(1, 1)
+shader_parameter/offset = Vector2(1, 1)
+
+[node name="DoodleBlackhole" type="Area2D"]
+material = SubResource("ShaderMaterial_rausl")
+position = Vector2(400, 300)
+collision_layer = 32
+collision_mask = 24
+script = ExtResource("2_djsxo")
+
+[node name="BlackholeHurtBox" parent="." instance=ExtResource("3_8rv6t")]
+position = Vector2(0, 0)
+
+[node name="BlackHoleGravityBox" parent="." instance=ExtResource("4_a1edu")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = -495
+scale = Vector2(5, 5)
+texture = ExtResource("5_35awd")

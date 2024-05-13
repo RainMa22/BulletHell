@@ -6,6 +6,7 @@ var target:Vector2
 
 func _init(target: Vector2 = Vector2(0,0)):
 	set_target(target)
+	style_manager = StyleManager.new();
 
 func set_target(target: Vector2):
 	self.target = target

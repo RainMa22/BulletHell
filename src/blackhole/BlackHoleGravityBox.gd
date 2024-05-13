@@ -1,7 +1,7 @@
 class_name BlackHoleGravityBox extends EffectArea
 
+@export var strength = 5./64
 var event_horizon:float
-
 var bodies_entered: Array
 
 @onready var visual:Sprite2D = $Visual
@@ -9,6 +9,7 @@ var bodies_entered: Array
 func _init(event_horizon = .2):
 	self.event_horizon = event_horizon
 	self.bodies_entered = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	area_entered.connect(_on_area_entered) # Replace with function body.
@@ -52,13 +53,19 @@ func _physics_process(delta):
 #func queue_to_free(body: Bullet):
 	#to_free.append(body)
 
+func get_ratio() -> Vector2:
+	return Vector2(1.0,1.0)/(visual.texture.get_size()*visual.global_scale)
+					
+func get_offset() -> Vector2:
+	return Vector2(get_window().size)/visual.global_position
+
 func collide_with_body(body: Bullet, delta):
 	var dist = self.global_position - body.global_position
 	var euclid_dist = euclidean_distance(dist)
-	euclid_dist /= visual.texture.get_size().x*visual.global_scale.x
-	euclid_dist -= event_horizon
-	if euclid_dist <  0:
-		body.velocity = Vector2(0,0)
+	euclid_dist *= get_ratio().x
+	#euclid_dist -= event_horizon
+	#if euclid_dist <  0:
+		#body.velocity = Vector2(0,0)
 		#queue_to_free(body)
-	body.velocity += dist/(euclid_dist**2)*delta
+	body.velocity += strength*dist*visual.texture.get_size()*event_horizon/((euclid_dist)**2)*delta
 	

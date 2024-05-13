@@ -10,10 +10,14 @@ class_name Blackhole extends Node2D
 @onready var visual: BlackHoleGravityBox = $BlackHoleGravityBox
 @onready var hurtbox: BlackholeHurtBox = $BlackholeHurtBox
 
+var style_manager: StyleManager
+
 func _ready():
 	var effect_radius = visual_radius_scale*effect_radius_ratio
 	var tween_visual = create_tween()
 	var tween_effect = create_tween()
+	style_manager = BlackholeStyleManager.new(visual,hurtbox);
+	style_manager.on_style_change();
 	visual.event_horizon = effect_radius_ratio - .1
 	tween_visual.tween_method(visual.set_scale, Vector2(0,0),
 	Vector2(visual_radius_scale+spawn_pop_intensity,visual_radius_scale+spawn_pop_intensity), spawn_time)
@@ -32,10 +36,12 @@ func _ready():
 func _process(delta):
 	#var bullet = await load("res://src/bullet/EnemyBullet.tscn")
 	#var b :Bullet=bullet.instantiate()
-	#b.position = Vector2(0, 400.);
+	#b.global_position = self.global_position;
+	#b.global_position.y += 400;
 	#b.disable_on_screen_detection = true
 	#b.starting_direction = Vector2(.25, -1)
-	#add_child(b);
+	#get_parent().add_child(b);
+	style_manager.on_style_change();
 	pass
 
 func _physics_process(delta):

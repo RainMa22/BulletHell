@@ -10,7 +10,9 @@ func on_style_change() -> void:
 			doodle_style()
 		_:
 			default_style()
-			
+	
+func _proc(delta):
+	on_style_change();
 func doodle_style():
 	push_error("Must Override StyleManager.doodle_style()!")
 	
