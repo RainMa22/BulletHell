@@ -23,11 +23,11 @@ func _proc(delta):
 	on_style_change();
 	
 func _is_valid() -> bool:
-	push_error("Must Override StyleManager._is_valid()!")
+	assert(false, "Must Override StyleManager._is_valid()!")
 	return true
 
 func doodle_style():
-	push_error("Must Override StyleManager.doodle_style()!")
+	assert(false,"Must Override StyleManager.doodle_style()!")
 	
 func default_style():
-	push_error("Must Override StyleManager.default_style()!")
+	assert(false,"Must Override StyleManager.default_style()!")

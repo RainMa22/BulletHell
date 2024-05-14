@@ -3,4 +3,8 @@
 [ext_resource type="Script" path="res://src/bg/BackgroundGrid.gd" id="1_u7t17"]
 
 [node name="BackgroundGrid" type="Node2D"]
+modulate = Color(0.941176, 0.964706, 0.941176, 1)
 script = ExtResource("1_u7t17")
+dot_color = Color(0, 0, 0, 1)
+dot_radius = 5
+num_lines = 9

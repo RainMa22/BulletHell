@@ -1,10 +1,11 @@
-extends Node
+@tool extends Node
 
 const BLACKHOLE_TRIGGER_DEVICE = preload("res://src/blackhole/BlackholeTriggerDevice.tscn")
 var popup_manager : PopupManager
 
 var current_boss : int
 enum Style {DOODLE=0, REGULAR=1}
+#var current_style: Style = Style.DOODLE;
 var current_style: Style = Style.REGULAR;
 var current_time: float;
 
