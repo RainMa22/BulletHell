@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://147xgt1khghm"]
+
+[ext_resource type="Script" path="res://src/blackhole/Blackhole.gd" id="2_jfmks"]
+[ext_resource type="PackedScene" uid="uid://1kt7u71uwshe" path="res://src/blackhole/BlackHoleHurtbox.tscn" id="3_yq54h"]
+[ext_resource type="PackedScene" uid="uid://dw2y3v8nyx45i" path="res://src/blackhole/BlackHoleGravityBox.tscn" id="4_cdrna"]
+[ext_resource type="Texture2D" uid="uid://bwacrjxrqsel4" path="res://icon.svg" id="5_cv5uk"]
+[ext_resource type="Shader" path="res://src/blackhole/DoodleBlackhole.gdshader" id="5_eval0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4dku"]
+shader = ExtResource("5_eval0")
+shader_parameter/body_color = Vector4(1, 1, 1, 1)
+shader_parameter/rim_color = Vector4(0, 0, 0, 1)
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
+shader_parameter/change_frequency = 1.0
+shader_parameter/ID = 1.0
+shader_parameter/body_radius_percentage = 0.15
+shader_parameter/rim_radius_percentage = 0.3
+shader_parameter/outline_extrusion_percentage = 0.05
+shader_parameter/outline_radius_percentage = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc063"]
+shader = ExtResource("5_eval0")
+shader_parameter/body_color = Vector4(1, 1, 1, 1)
+shader_parameter/rim_color = Vector4(0, 0, 0, 1)
+shader_parameter/outline_color = Vector4(0, 0, 0, 1)
+shader_parameter/change_frequency = 1.0
+shader_parameter/ID = 1.0
+shader_parameter/body_radius_percentage = 0.15
+shader_parameter/rim_radius_percentage = 0.3
+shader_parameter/outline_extrusion_percentage = 0.05
+shader_parameter/outline_radius_percentage = 0.01
+
+[node name="DoodleBlackhole" type="Area2D"]
+material = SubResource("ShaderMaterial_t4dku")
+position = Vector2(400, 300)
+collision_layer = 32
+collision_mask = 24
+script = ExtResource("2_jfmks")
+
+[node name="BlackholeHurtBox" parent="." instance=ExtResource("3_yq54h")]
+visible = false
+position = Vector2(0, 0)
+
+[node name="BlackHoleGravityBox" parent="." instance=ExtResource("4_cdrna")]
+material = SubResource("ShaderMaterial_hc063")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -495
+scale = Vector2(5, 5)
+texture = ExtResource("5_cv5uk")

@@ -37,8 +37,15 @@ func doodle_style() -> void:
 	styleMaterial.set_shader_parameter("change_frequency", 5)
 
 func default_style() -> void:
-	body_node.visible = true;
-	outline_node.material = outline_material;
+	body_node.visible = false;
+	outline_material = outline_node.material
+	outline_node.material = styleMaterial
+	styleMaterial.set_shader(REGULAR)
+	styleMaterial.set_shader_parameter("body_color", get_body_color())
+	styleMaterial.set_shader_parameter("rim_color", get_outline_color())
+	styleMaterial.set_shader_parameter("outline_color", get_outline_color())
+	styleMaterial.set_shader_parameter("ID", Global.current_time)
+	styleMaterial.set_shader_parameter("change_frequency", 5)
 
 func _process(delta):
 	#styleMaterial.set_shader_parameter("rand_val", rng.randf())

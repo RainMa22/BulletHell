@@ -7,6 +7,7 @@
 radius = 8.15
 
 [node name="BlackHoleGravityBox" type="Area2D"]
+modulate = Color(0, 0, 0, 0.0980392)
 collision_layer = 32
 collision_mask = 24
 script = ExtResource("1_fdoco")
