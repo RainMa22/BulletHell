@@ -1,6 +1,7 @@
 class_name BulletStyleManager extends StyleManager
 
-const DOODLE: Shader = preload("res://src/bullet/DoodleBulletPointy.gdshader")
+const REGULAR: Shader = preload("res://src/bullet/DoodleBulletPointy.gdshader")
+const DOODLE: Shader = preload("res://src/bullet/DoodleBullet.gdshader")
 
 var body_node: Sprite2D
 var outline_node:Sprite2D
@@ -8,6 +9,7 @@ var outline_material: Material
 var styleMaterial:ShaderMaterial
 
 func _init(body_node: Sprite2D, outline_node: Sprite2D):
+	super._init()
 	self.body_node = body_node
 	self.outline_node = outline_node
 	outline_material = outline_node.material
@@ -19,6 +21,9 @@ func get_body_color() -> Color:
 	
 func get_outline_color() -> Color:
 	return outline_node.modulate
+
+func _is_valid():
+	return is_instance_valid(body_node)
 
 func doodle_style() -> void:
 	body_node.visible = false;

@@ -22,26 +22,27 @@ var deceleration : float = 1500
 # SHOOTING
 var bullet = preload("res://src/bullet/PlayerBullet.tscn")
 var explosion = preload("res://src/vfx/Explosion.tscn")
-#var bullet = preload("res://src/bullet/DoodleBullet.tscn")
+
+var style_manager: StyleManager
 var can_shoot := true
 var shoot_cooldown = 0.2 # in seconds
 
 # COMPONENTS
 @onready var health : Health = $Health
 @onready var shoot_timer : Timer = $ShootTimer
-
+@onready var ship: Sprite2D = $Ship1
 
 
 func _ready():
-	#get_parent().get_parent().player = self
-	#health.on_died.connect(get_parent().get_parent().player_died)
+	style_manager = PlayerStyleManager.new(ship)
+	style_manager.on_style_change()
 	pass
 
 func _process(delta):
 	update_inputs()
 	update_shooting()
 	
-	look_at(global_position + Vector2.UP * 1000 + Vector2.RIGHT * velocity.x) # LEAN TOWARDS X-AXIS MOVEMENT (scuffed fix sometime)
+	look_at(global_position + Vector2.RIGHT * 1000 + Vector2.DOWN * velocity.x) # LEAN TOWARDS X-AXIS MOVEMENT (scuffed fix sometime)
 	
 	# LOOP AT EDGES (make thing go around when reach the sides)
 	if global_position.x > 275:

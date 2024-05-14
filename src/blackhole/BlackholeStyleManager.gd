@@ -15,6 +15,8 @@ func _init(visual: BlackHoleGravityBox, hurtbox: BlackholeHurtBox):
 	shader_material = ShaderMaterial.new();
 	self.visual.material = shader_material;
 	
+func _is_valid():
+	return is_instance_valid(visual)
 
 func doodle_style():
 	default_style() #TODO

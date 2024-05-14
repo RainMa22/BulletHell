@@ -9,7 +9,7 @@ var current_style: Style = Style.DOODLE;
 var current_time: float;
 
 #STYLE MANAGEMENT
-signal style_changed(new_style)
+signal style_changed
 func change_style(style = null):
 	if style == null:
 		style = current_style
@@ -18,7 +18,7 @@ func change_style(style = null):
 			style = Style.values()[rng.randi_range(0,Style.size()-1)]
 			#print("changing style to {style}!".format({"style": style}))
 	current_style = style;
-	style_changed.emit(style)
+	style_changed.emit()
 
 #BLACKHOLE
 func summon_blackhole(parent:Node = get_tree().get_root()):

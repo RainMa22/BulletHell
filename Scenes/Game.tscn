@@ -133,7 +133,6 @@ time_for_one_y_delta_scroll = 0.5
 
 [node name="Player" parent="GameContent" instance=ExtResource("1_udpsn")]
 position = Vector2(250, 1256)
-scale = Vector2(0.99701, 1)
 
 [node name="Boss" parent="GameContent" instance=ExtResource("2_4fr0q")]
 position = Vector2(250, 784)
