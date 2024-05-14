@@ -1,6 +1,6 @@
 class_name BlackHoleGravityBox extends EffectArea
 
-@export var strength = 5./64
+@export var strength = 5./32
 var event_horizon:float
 var bodies_entered: Array
 
