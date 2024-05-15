@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://enxcgk81l2t0"]
+
+[ext_resource type="Script" path="res://pixel_perfect/pixel_perfect_container.gd" id="1_m0evy"]
+[ext_resource type="Script" path="res://pixel_perfect/pixel_perfect_rect.gd" id="1_vxdn4"]
+[ext_resource type="Shader" path="res://pixel_perfect/palette.gdshader" id="2_el6ur"]
+[ext_resource type="Script" path="res://pixel_perfect/pixel_perfect_palette.gd" id="4_15eg1"]
+[ext_resource type="Texture2D" uid="uid://c0fmpw5q3hv5d" path="res://pixel_perfect/demo_palettes/bit_monitor.png" id="5_okqug"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyg3d"]
+shader = ExtResource("2_el6ur")
+shader_parameter/palette_colours = null
+shader_parameter/palette_size = 1
+shader_parameter/camera_offset = Vector2(0, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8vqf"]
+viewport_path = NodePath("PixelViewport")
+
+[node name="PixelPerfect" type="SubViewportContainer"]
+script = ExtResource("1_m0evy")
+
+[node name="PixelViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(512, 288)
+render_target_update_mode = 4
+
+[node name="PixelCanvas" type="CanvasLayer" parent="."]
+
+[node name="Bg" type="ColorRect" parent="PixelCanvas"]
+offset_left = -10000.0
+offset_top = -10000.0
+offset_right = 10000.0
+offset_bottom = 10000.0
+color = Color(0, 0, 0, 1)
+
+[node name="PixelTexture" type="TextureRect" parent="PixelCanvas"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_gyg3d")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("ViewportTexture_o8vqf")
+stretch_mode = 3
+script = ExtResource("1_vxdn4")
+
+[node name="PixelPalette" type="Node" parent="PixelCanvas" node_paths=PackedStringArray("target_texture")]
+script = ExtResource("4_15eg1")
+palette_image = ExtResource("5_okqug")
+target_texture = NodePath("../PixelTexture")
+
+[connection signal="scale_factor_changed" from="PixelCanvas/PixelTexture" to="." method="_on_pixel_texture_scale_factor_changed"]

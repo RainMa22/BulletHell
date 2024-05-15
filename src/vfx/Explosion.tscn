@@ -15,12 +15,12 @@ shader_parameter/body_radius_percentage = 0.15
 shader_parameter/scale = 1.0
 
 [node name="Explosion" type="Node2D"]
+z_index = -1
 script = ExtResource("1_mx2g4")
 inner_color = Color(0.941176, 0.964706, 0.941176, 1)
 outer_color = Color(0.133333, 0.137255, 0.137255, 1)
 
 [node name="Circle" type="Sprite2D" parent="."]
-z_index = 500
 texture_filter = 1
 material = SubResource("ShaderMaterial_whwge")
 position = Vector2(1, -1)

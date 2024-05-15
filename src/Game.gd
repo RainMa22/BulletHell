@@ -16,6 +16,7 @@ func _ready():
 	boss.health.on_died.connect(boss_died)
 	player = $GameContent/Player
 	player.health.on_died.connect(player_died)
+	Global.current_game = self
 	
 func _process(delta):
 	pass

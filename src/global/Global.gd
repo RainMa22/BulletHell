@@ -4,6 +4,8 @@ const BLACKHOLE_TRIGGER_DEVICE = preload("res://src/blackhole/BlackholeTriggerDe
 const game = preload("res://scenes/Game.tscn")
 var popup_manager : PopupManager
 
+var current_game : Game
+
 var current_boss : int
 enum Style {DOODLE=0, REGULAR=1}
 #var current_style: Style = Style.DOODLE;
@@ -26,7 +28,7 @@ func change_style(style = null):
 func summon_blackhole(parent:Node = get_tree().get_root()):
 	var blackhole = BLACKHOLE_TRIGGER_DEVICE.instantiate()
 	blackhole.set_target(Vector2(0,0))
-	parent.add_child(blackhole)
+	current_game.add_child(blackhole)
 
 #ON RAM FULL
 func _on_ram_full():

@@ -25,7 +25,7 @@
 @export var time_for_one_y_delta_scroll := 1.0
 
 @export_group("Doodle_Style")
-@export var num_lines := 16
+@export var num_lines : int = 16
 
 var x_scroll_delta := 0.0
 var y_scroll_delta := 0.0
@@ -81,7 +81,7 @@ func draw_doodle():
 	var origin : Vector2 = Vector2(-width / 2, -height / 2) # Finds the negative-most corner for the first dot.	
 	draw_rect(Rect2(origin,Vector2(width, height)), modulate)
 	draw_line(origin+Vector2(width*.2, 0),origin+Vector2(width*.2,height),Color.LIGHT_BLUE)
-	for i in range(0,num_lines):
+	for i in range(0, num_lines):
 		draw_line(origin+Vector2(0,height/num_lines*i+y_parallax_offset),
 		origin+Vector2(width,height/num_lines*i+y_parallax_offset),Color.LIGHT_CORAL)
 	

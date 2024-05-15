@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi3m5ffxhuki0"]
+
+[ext_resource type="PackedScene" uid="uid://enxcgk81l2t0" path="res://pixel_perfect/pixel_perfect.tscn" id="1_2atqm"]
+[ext_resource type="PackedScene" uid="uid://wuw80b1roaq" path="res://scenes/Game.tscn" id="2_6t4l3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_trrt6"]
+viewport_path = NodePath("PixelViewport")
+
+[node name="PixelPerfectGame" type="Node2D"]
+
+[node name="PixelPerfect" parent="." instance=ExtResource("1_2atqm")]
+pixel_size = Vector2i(512, 512)
+
+[node name="Game" parent="PixelPerfect/PixelViewport" index="0" instance=ExtResource("2_6t4l3")]
+scale = Vector2(0.7, 0.7)
+
+[node name="PixelTexture" parent="PixelPerfect/PixelCanvas" index="1"]
+texture = SubResource("ViewportTexture_trrt6")
+
+[editable path="PixelPerfect"]

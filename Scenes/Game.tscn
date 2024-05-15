@@ -111,25 +111,26 @@ texture = ExtResource("5_8pbe5")
 z_index = -2
 position = Vector2(250, 1016)
 dot_color = Color(0.882353, 0.901961, 0.882353, 1)
+dot_radius = 4
 width = 600.0
-height = 600.0
+height = 800.0
 num_of_dots_x = 12
-num_of_dots_y = 12
+num_of_dots_y = 19
 parallax_x_factor = -1
 time_for_one_x_delta_scroll = 7.0
-num_lines = 14
 
 [node name="BackgroundGrid" parent="GameContent" instance=ExtResource("7_rkqf8")]
 z_index = -2
 position = Vector2(250, 1000)
 dot_color = Color(0.823529, 0.839216, 0.823529, 1)
+dot_radius = 4
 width = 600.0
-height = 600.0
-num_of_dots_y = 10
+height = 800.0
+num_of_dots_y = 19
 parallax_x_factor = 1
 time_for_one_x_delta_scroll = 5.0
 time_for_one_y_delta_scroll = 0.5
-num_lines = 14
+num_lines = 24
 
 [node name="Player" parent="GameContent" instance=ExtResource("1_udpsn")]
 position = Vector2(250, 1256)
