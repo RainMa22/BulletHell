@@ -1,6 +1,7 @@
 @tool extends Node
 
 const BLACKHOLE_TRIGGER_DEVICE = preload("res://src/blackhole/BlackholeTriggerDevice.tscn")
+const game = preload("res://scenes/Game.tscn")
 var popup_manager : PopupManager
 
 var current_boss : int
