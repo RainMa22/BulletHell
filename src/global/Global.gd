@@ -24,6 +24,10 @@ func change_style(style = null):
 	current_style = style;
 	style_changed.emit()
 
+#BOSS DIFFICULTY CALCULATION
+func calculate_difficulty():
+	return 1/(current_boss**0.1) 
+	
 #BLACKHOLE
 func summon_blackhole(parent:Node = get_tree().get_root()):
 	var blackhole = BLACKHOLE_TRIGGER_DEVICE.instantiate()

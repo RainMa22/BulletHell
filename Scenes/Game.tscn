@@ -140,6 +140,9 @@ position = Vector2(250, 784)
 
 [node name="PopupManager" parent="GameContent" instance=ExtResource("6_11fke")]
 
+[node name="BossSpawnPoint" type="Node2D" parent="GameContent"]
+position = Vector2(250, 784)
+
 [node name="Camera" parent="." instance=ExtResource("7_5lh54")]
 
 [node name="Result" type="RichTextLabel" parent="."]

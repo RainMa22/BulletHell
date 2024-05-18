@@ -9,20 +9,25 @@ func get_pattern_rate():
 func get_firerate():
 	return .02
 
-func _init(variety:int = 50, difficulty: float = 1.0):
+func _init(variety:int = 50, difficulty: float = -1.0):
 	self.variety = variety
 	self.difficulty = difficulty
+	
 
+	
+func set_difficulty(difficulty:float = -1.0):
+	if(difficulty == -1.0):
+		difficulty = Global.calculate_difficulty()
+	health.max_health = 80/difficulty
+	health.health = health.max_health
+	self.difficulty = difficulty
+	self.randomize(variety, 0, 0, difficulty)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	health.max_health = 100
-	health.health = 100
 	patterns = [RandomPattern.new(self,get_pattern_rate(),get_firerate())]
-	self.randomize(variety, 0, 0, difficulty)
-	
-
-
+	set_difficulty(self.difficulty)
 
 func process_pattern(delta):
 	var current_pattern = patterns[state]

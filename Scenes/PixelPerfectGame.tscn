@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi3m5ffxhuki0"]
+[gd_scene load_steps=4 format=3 uid="uid://da0hv30jcuveg"]
 
 [ext_resource type="PackedScene" uid="uid://enxcgk81l2t0" path="res://pixel_perfect/pixel_perfect.tscn" id="1_2atqm"]
 [ext_resource type="PackedScene" uid="uid://wuw80b1roaq" path="res://scenes/Game.tscn" id="2_6t4l3"]
