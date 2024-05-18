@@ -10,6 +10,7 @@ class_name Config extends Resource
 @export var sfx_volume : float = 1.0
 
 @export var current_boss_number : int = 1
+@export var personal_best : int = -1
 
 @export var allow_screen_shake : bool = true # Use for both SHAKE and KICK
 @export var screen_shake_magnitude : float = 1.0

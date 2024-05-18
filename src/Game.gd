@@ -35,13 +35,13 @@ func boss_died():
 		tween.tween_callback(update_countdown)
 		tween.tween_interval(1.)
 	tween.tween_callback(boss_respawn)
-	
+
 func update_countdown():
-	$Result.text = "[center]yippie!\nBoss Respawning in {time} seconds".format(
+	$Result.text = "[center]Yippie!\nBoss Respawning in {time} seconds".format(
 		{"time":BOSS_RESPAWN_TIME_SECONDS-sec_boss_died})
 	sec_boss_died = (sec_boss_died + 1) % BOSS_RESPAWN_TIME_SECONDS
-		
-	
+
+
 func boss_respawn():
 	var boss_transform = $GameContent/BossSpawnPoint.transform;
 	boss = BOSS.instantiate()
@@ -51,4 +51,15 @@ func boss_respawn():
 	$Result.text = ""
 
 func player_died():
-	$Result.text = "[center]skill issue"
+	$Result.text = "[center]Skill Issue"
+	RenderingServer.frame_post_draw.connect(switch_to_game_end)
+	
+
+func switch_to_game_end():
+	Global.gameover_stats = {
+		"boss_beaten": Global.current_boss,
+		"last_frame_texture":get_tree().get_root().get_viewport().get_texture()
+	};
+	Global.reset_progress()
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+	

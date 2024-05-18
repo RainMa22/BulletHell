@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1on3ju6t38e5"]
+
+[ext_resource type="Script" path="res://scenes/GameOver.gd" id="1_h3de7"]
+[ext_resource type="PackedScene" uid="uid://bhc0ufx4ih1rd" path="res://src/ui/VolumerSlider.tscn" id="1_r2fbb"]
+[ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="2_lj8b6"]
+[ext_resource type="Script" path="res://src/ReturnToTitle.gd" id="3_6igs7"]
+[ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_1koyn"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_h3de7")
+
+[node name="VolumeSlider" parent="." instance=ExtResource("1_r2fbb")]
+visible = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnToMainMenu" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = 104.0
+offset_right = 244.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_lj8b6")
+text = "Return to Title"
+script = ExtResource("3_6igs7")
+
+[node name="Title" type="RichTextLabel" parent="Control"]
+clip_contents = false
+layout_mode = 0
+offset_left = -240.0
+offset_top = -208.0
+offset_right = 239.0
+offset_bottom = -111.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 35
+theme_override_fonts/normal_font = ExtResource("2_lj8b6")
+theme_override_font_sizes/normal_font_size = 71
+bbcode_enabled = true
+text = "[center]Gee Gees"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Stats" type="RichTextLabel" parent="Control"]
+clip_contents = false
+offset_left = -240.0
+offset_top = -113.0
+offset_right = 239.0
+offset_bottom = -16.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/line_separation = 20
+theme_override_constants/outline_size = 13
+theme_override_fonts/normal_font = ExtResource("2_lj8b6")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[center]You have beaten {boss_beaten} boss{plural},
+Your personal best is: {personal_best},
+{personal_best_msg}"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0.133333, 0.137255, 0.137255, 1)
+z_index = -2
+scale = Vector2(10000, 10000)
+texture = ExtResource("5_1koyn")

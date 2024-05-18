@@ -12,6 +12,19 @@ enum Style {DOODLE=0, REGULAR=1}
 var current_style: Style = Style.REGULAR;
 var current_time: float;
 
+#Gameover stats
+var gameover_stats:Dictionary = {}; 
+func get_pb():
+	return ConfigManager.current_config.personal_best
+
+func get_peanut_butter():
+	return get_pb()
+
+func reset_progress():
+	ConfigManager.current_config.current_boss_number = 1
+	ConfigManager.save_config(ConfigManager.current_config)
+	Global.current_boss = 1
+
 #STYLE MANAGEMENT
 signal style_changed
 func change_style(style = null):
