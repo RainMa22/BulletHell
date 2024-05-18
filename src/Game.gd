@@ -56,9 +56,11 @@ func player_died():
 	
 
 func switch_to_game_end():
+	var viewport_image =get_tree().get_root().get_viewport().get_texture().get_image()
+	var viewport_texture: Texture2D = ImageTexture.create_from_image(viewport_image)
 	Global.gameover_stats = {
 		"boss_beaten": Global.current_boss,
-		"last_frame_texture":get_tree().get_root().get_viewport().get_texture()
+		"last_frame_texture": viewport_texture
 	};
 	Global.reset_progress()
 	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

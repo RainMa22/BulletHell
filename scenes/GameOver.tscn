@@ -57,6 +57,7 @@ autowrap_mode = 0
 
 [node name="Stats" type="RichTextLabel" parent="Control"]
 clip_contents = false
+layout_mode = 0
 offset_left = -240.0
 offset_top = -113.0
 offset_right = 239.0
