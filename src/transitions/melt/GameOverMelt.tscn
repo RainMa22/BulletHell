@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3vam40g4f8yl"]
+
+[ext_resource type="Shader" path="res://src/transitions/melt/Melt.gdshader" id="1_5serd"]
+[ext_resource type="Texture2D" uid="uid://bwacrjxrqsel4" path="res://icon.svg" id="2_d3tok"]
+[ext_resource type="Script" path="res://src/transitions/melt/Melt.gd" id="3_jowgx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxhwy"]
+shader = ExtResource("1_5serd")
+shader_parameter/current_time = 0.466167
+shader_parameter/swipe_up = false
+
+[node name="GameOverMelt" type="Sprite2D"]
+material = SubResource("ShaderMaterial_vxhwy")
+position = Vector2(399, 300)
+scale = Vector2(6.23438, 4.70313)
+texture = ExtResource("2_d3tok")
+script = ExtResource("3_jowgx")
