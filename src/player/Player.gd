@@ -8,6 +8,8 @@ class_name Player extends CharacterBody2D
 # The spaceship that the player is.    #
 ########################################
 
+@export var shoot_sfx : Array[AudioStream]
+
 # INPUTS
 var input_directional_vector : Vector2 = Vector2.ZERO
 var is_shooting := false
@@ -61,6 +63,8 @@ func update_inputs() -> void:
 
 
 
+var rng = RandomNumberGenerator.new()
+
 func _on_shoot_timer_timeout():
 	can_shoot = true
 func update_shooting() -> void:
@@ -77,6 +81,10 @@ func update_shooting() -> void:
 		
 		CameraShake.kick(Vector2.DOWN * 3.2)
 		CameraShake.add_trauma(0.01)
+		
+		($AudioPlayer as AudioStreamPlayer2D).stream = shoot_sfx[rng.randi_range(0, len(shoot_sfx) - 1)]
+		if ($AudioPlayer as AudioStreamPlayer2D).playing == false:
+			($AudioPlayer as AudioStreamPlayer2D).play(0.0)
 		
 		bullet_instance.global_position = $BulletSpawnPoint.global_position # Spawn bullet at that point. # SET POSITION TO SPAWN POINT
 		new_explosion.global_position = $BulletSpawnPoint.global_position

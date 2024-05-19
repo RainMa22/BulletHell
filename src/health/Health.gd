@@ -7,6 +7,9 @@ class_name Health extends Node
 # Generalised health logic, for use with any entity. #
 ######################################################
 
+@export var damage_sfx : Array[AudioStream]
+@onready var damage_player : AudioStreamPlayer2D = $DamagePlayer
+
 signal on_health_damaged(change)
 signal on_health_healed(change)
 
@@ -28,7 +31,7 @@ func start_invincibility() -> void:
 	is_invincible = true
 	invincibility_timer.start(invincibility_time)
 
-
+var rng = RandomNumberGenerator.new()
 
 var is_dead = false
 
@@ -55,6 +58,10 @@ var health := 10:
 			on_health_healed.emit(val - health) # Healed!
 		elif val < health:
 			on_health_damaged.emit(health - val) # Damaged.
+			
+			damage_player.stream = damage_sfx[rng.randi_range(0, len(damage_sfx) - 1)]
+			if damage_player.playing == false:
+				damage_player.play(0.0)
 		
 		health = clampi(val, 0, max_health) # Clamp health between 0 and max_health.
 		

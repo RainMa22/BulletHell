@@ -12,5 +12,6 @@ script = ExtResource("1_opub8")
 
 [node name="BlackholeHurtBox" parent="." instance=ExtResource("3_3okvp")]
 position = Vector2(0, 0)
+collision_mask = 30
 
 [node name="BlackHoleGravityBox" parent="." instance=ExtResource("3_sburg")]
