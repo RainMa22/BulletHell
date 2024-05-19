@@ -13,5 +13,6 @@ damage_sfx = Array[AudioStream]([ExtResource("2_46c2d"), ExtResource("3_fqcon"),
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="DamagePlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
