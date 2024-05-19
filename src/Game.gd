@@ -22,6 +22,8 @@ func _ready():
 	player.health.on_died.connect(player_died)
 	Global.current_game = self
 	bind_boss_signals()
+	
+	$HPBar.hp_init()
 
 func bind_boss_signals():
 	boss.health.on_died.connect(boss_died)

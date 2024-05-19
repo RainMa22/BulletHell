@@ -36,6 +36,8 @@ var shoot_cooldown = 0.2 # in seconds
 func _ready():
 	style_manager = PlayerStyleManager.new(ship)
 	style_manager.on_style_change()
+	health.max_health = 15
+	health.health = 15
 	pass
 
 func _process(delta):

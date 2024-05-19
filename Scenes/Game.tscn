@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wuw80b1roaq"]
+[gd_scene load_steps=15 format=3 uid="uid://wuw80b1roaq"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_fg8e7"]
 [ext_resource type="PackedScene" uid="uid://cwn1aknxem4n4" path="res://src/player/Player.tscn" id="1_udpsn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3eviuhl035cw" path="res://src/sound/music/Music.tscn" id="7_gw7n1"]
 [ext_resource type="PackedScene" uid="uid://becfwh3iojy7n" path="res://src/bg/BackgroundGrid.tscn" id="7_rkqf8"]
 [ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="8_khm1l"]
+[ext_resource type="PackedScene" uid="uid://cbq4ablly1rqq" path="res://src/ui/HPBar.tscn" id="11_eu6sy"]
 
 [sub_resource type="Animation" id="Animation_nxp4p"]
 length = 0.001
@@ -195,8 +196,30 @@ bbcode_enabled = true
 text = "[center]RAM"
 fit_content = true
 
+[node name="HP" type="RichTextLabel" parent="."]
+z_index = 2000
+clip_contents = false
+offset_left = 272.0
+offset_top = 256.0
+offset_right = 367.692
+offset_bottom = 320.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = ExtResource("8_khm1l")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[center]HP"
+fit_content = true
+
 [node name="RAMBar" parent="." instance=ExtResource("4_oghjs")]
 offset_left = -352.0
 offset_top = -176.0
 offset_right = -288.0
+offset_bottom = 224.0
+
+[node name="HPBar" parent="." instance=ExtResource("11_eu6sy")]
+offset_left = 288.0
+offset_top = -176.0
+offset_right = 352.0
 offset_bottom = 224.0
