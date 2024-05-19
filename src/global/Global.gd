@@ -24,6 +24,7 @@ func reset_progress():
 	ConfigManager.current_config.current_boss_number = 1
 	ConfigManager.save_config(ConfigManager.current_config)
 	Global.current_boss = 1
+	current_style = Style.REGULAR;
 
 #STYLE MANAGEMENT
 signal style_changed
