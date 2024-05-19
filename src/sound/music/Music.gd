@@ -28,7 +28,6 @@ func load_stream(first_time:bool = false):
 	tween.tween_callback(play)
 	
 func load_game_music():
-	print(Global.current_style)
 	self.stream = game_music_streams[int(clamp(Global.current_style, 0, game_music_streams.size()-1))]
 
 func load_sound_effects():
