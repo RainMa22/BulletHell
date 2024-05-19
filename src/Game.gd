@@ -52,6 +52,7 @@ func boss_died():
 		tween.tween_interval(1.)
 	tween.tween_callback(boss_respawn)
 	player.health.health=player.health.max_health
+	$HPBar.changed(0)
 
 func update_countdown():
 	$Result.text = "[center]Yippie!\nBoss Respawning in {time} seconds".format(
