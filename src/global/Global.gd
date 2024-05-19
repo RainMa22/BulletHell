@@ -57,10 +57,14 @@ func _on_ram_full():
 # BULLET COUNTER GLOBAL PROPERTY
 signal bullet_counter_increased(new_value)
 signal bullet_counter_decreased(new_value)
+var default_ram_max_value = 95
+func get_ram_max_value():
+	return round(95/calculate_difficulty())
+
 var bullet_counter : int = 0:
 	set(val):
 		
-		chaos_value = float(val) / 95 # UPDATE THE CHAOS VALUE with the new value
+		chaos_value = float(val) / get_ram_max_value() # UPDATE THE CHAOS VALUE with the new value
 		
 		if val > bullet_counter:
 			bullet_counter_increased.emit(val) # Increase, emit signal.
