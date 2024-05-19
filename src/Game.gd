@@ -9,6 +9,8 @@ class_name Game extends Node2D
 
 var player : Player
 var boss : Boss
+var boss_name: RichTextLabel
+const BOSS_NAME_TEMPLATE := "[center] The {0}Grandchild of Evil"
 
 var BOSS: Resource;
 var sec_boss_died:=0;
@@ -19,11 +21,21 @@ func _ready():
 	BOSS = await load("res://src/boss/Boss.tscn")
 	boss = $GameContent/Boss
 	player = $GameContent/Player
+	boss_name = $GameContent/BossBar/BossName
 	player.health.on_died.connect(player_died)
 	Global.current_game = self
 	bind_boss_signals()
-	
+	update_boss_name()
 	$HPBar.hp_init()
+	$GameContent/BossBar/BossHPBar.hp_init()
+
+func update_boss_name():
+	var nth = ""
+	if(Global.current_boss>1 && Global.current_boss <= 3):
+		nth = "Great ".repeat(Global.current_boss-1)
+	elif(Global.current_boss > 3):
+		nth = "Great[font_size=10]x{0}[/font_size] ".format([Global.current_boss-1])
+	boss_name.text = BOSS_NAME_TEMPLATE.format([nth])
 
 func bind_boss_signals():
 	boss.health.on_died.connect(boss_died)
@@ -44,6 +56,7 @@ func update_countdown():
 	sec_boss_died = (sec_boss_died + 1) % BOSS_RESPAWN_TIME_SECONDS
 
 
+signal boss_respawned
 func boss_respawn():
 	var boss_transform = $GameContent/BossSpawnPoint.transform;
 	boss = BOSS.instantiate()
@@ -51,6 +64,8 @@ func boss_respawn():
 	$GameContent.add_child(boss)
 	bind_boss_signals()
 	$Result.text = ""
+	update_boss_name()
+	boss_respawned.emit();
 
 func player_died():
 	$Result.text = "[center]Skill Issue"
