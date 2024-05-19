@@ -1,4 +1,4 @@
-@tool class_name Melt extends Sprite2D
+class_name Melt extends Sprite2D
 
 @onready var shader: Shader = load("res://src/transitions/melt/Melt.gdshader")
 @onready var shaderMaterial = ShaderMaterial.new()

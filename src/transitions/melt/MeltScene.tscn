@@ -4,13 +4,13 @@
 [ext_resource type="Shader" path="res://src/transitions/melt/Melt.gdshader" id="1_yofrv"]
 [ext_resource type="Script" path="res://src/transitions/melt/Melt.gd" id="2_vidai"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3n5r3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxhwy"]
 shader = ExtResource("1_yofrv")
-shader_parameter/current_time = 0.0
+shader_parameter/current_time = 0.466167
 shader_parameter/swipe_up = false
 
 [node name="MeltScene" type="Sprite2D"]
-material = SubResource("ShaderMaterial_3n5r3")
+material = SubResource("ShaderMaterial_vxhwy")
 position = Vector2(399, 300)
 scale = Vector2(6.23438, 4.70313)
 texture = ExtResource("1_m3oia")
