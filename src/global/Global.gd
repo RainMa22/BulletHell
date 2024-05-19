@@ -2,6 +2,7 @@
 
 const BLACKHOLE_TRIGGER_DEVICE = preload("res://src/blackhole/BlackholeTriggerDevice.tscn")
 const game = preload("res://scenes/Game.tscn")
+const GlitchEffect = preload("res://src/transitions/Glitch/GlitchScene.tscn")
 var popup_manager : PopupManager
 
 var current_game : Game
@@ -51,7 +52,11 @@ func summon_blackhole(parent:Node = get_tree().get_root()):
 #ON RAM FULL
 func _on_ram_full():
 	summon_blackhole()
-	change_style()
+	var glitch: Glitch =GlitchEffect.instantiate()
+	var a = func():
+		change_style()
+	current_game.add_child(glitch)
+	glitch.finished.connect(a)
 	
 
 # BULLET COUNTER GLOBAL PROPERTY

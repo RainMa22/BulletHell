@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://d27gttgg8qd8g"]
+
+[ext_resource type="Script" path="res://src/transitions/Glitch/Glitch.gd" id="1_e7teh"]
+
+[node name="GlitchScene" type="Node2D"]
+z_index = 1
+script = ExtResource("1_e7teh")
+
+[node name="RED" type="Polygon2D" parent="."]
+position = Vector2(-467, -251)
+color = Color(1, 0, 0, 0.392157)
+polygon = PackedVector2Array(-1, -1, 6, 193, 172, 252, 454, 173, 751, -55)
+
+[node name="GREEN" type="Polygon2D" parent="."]
+position = Vector2(-467, -251)
+color = Color(0, 1, 0, 0.392157)
+polygon = PackedVector2Array(505, -69, 124, 342, 322, 703, 864, 653, 906, -41)
+
+[node name="BLUE" type="Polygon2D" parent="."]
+position = Vector2(-467, -251)
+color = Color(0, 0, 1, 0.392157)
+polygon = PackedVector2Array(-51, 173, -71, 551, 157, 663, 615, 476, 348, 226, 208, 115)

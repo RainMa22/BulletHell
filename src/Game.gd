@@ -10,6 +10,7 @@ class_name Game extends Node2D
 var player : Player
 var boss : Boss
 var boss_name: RichTextLabel
+var gamecontent: Control
 const BOSS_NAME_TEMPLATE := "[center] The {0}Grandchild of Evil"
 
 var BOSS: Resource;
@@ -22,6 +23,7 @@ func _ready():
 	boss = $GameContent/Boss
 	player = $GameContent/Player
 	boss_name = $GameContent/BossBar/BossName
+	gamecontent = $GameContent
 	player.health.on_died.connect(player_died)
 	Global.current_game = self
 	bind_boss_signals()
