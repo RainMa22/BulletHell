@@ -65,6 +65,7 @@ scale = Vector2(0.075, 0.075)
 texture = ExtResource("3_xwl1j")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
 
 [connection signal="on_died" from="Health" to="." method="_on_health_on_died"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
