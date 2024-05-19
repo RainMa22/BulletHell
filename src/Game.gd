@@ -59,7 +59,7 @@ func switch_to_game_end():
 	var viewport_image =get_tree().get_root().get_viewport().get_texture().get_image()
 	var viewport_texture: Texture2D = ImageTexture.create_from_image(viewport_image)
 	Global.gameover_stats = {
-		"boss_beaten": Global.current_boss,
+		"boss_beaten": Global.current_boss-1,
 		"last_frame_texture": viewport_texture
 	};
 	Global.reset_progress()
