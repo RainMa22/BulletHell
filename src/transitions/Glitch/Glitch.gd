@@ -3,7 +3,7 @@ class_name Glitch extends Node2D
 @onready var RED = $RED
 @onready var GREEN = $GREEN
 @onready var BLUE = $BLUE
-@onready var sfx_stream: AudioStreamOggVorbis= AudioStreamOggVorbis.load_from_file("res://resources/sound/glitch.ogg")
+var sfx_stream: AudioStreamOggVorbis = PreloadedResources.GLITCH_SFX;
 
 signal finished
 func _ready():

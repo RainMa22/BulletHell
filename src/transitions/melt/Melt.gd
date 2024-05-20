@@ -1,6 +1,6 @@
 class_name Melt extends Sprite2D
 
-@onready var sfx_stream: AudioStreamOggVorbis = AudioStreamOggVorbis.load_from_file("res://resources/sound/gameover.ogg") 
+@onready var sfx_stream: AudioStreamOggVorbis = PreloadedResources.GAMEOVER_SFX 
 @onready var shader: Shader = load("res://src/transitions/melt/Melt.gdshader")
 @onready var shaderMaterial = ShaderMaterial.new()
 

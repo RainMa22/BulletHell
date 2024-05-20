@@ -23,6 +23,7 @@ Global="*res://src/global/Global.gd"
 ConfigManager="*res://src/config/ConfigGlobal.gd"
 CameraShake="*res://src/camera/CameraShake.gd"
 PixelPerfect="*res://pixel_perfect/pixel_perfect_global.gd"
+PreloadedResources="*res://src/global/PreloadedResources.tscn"
 
 [display]
 
