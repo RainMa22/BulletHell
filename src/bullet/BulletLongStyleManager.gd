@@ -27,6 +27,7 @@ func _is_valid():
 
 func doodle_style() -> void:
 	body_node.visible = false;
+	outline_material = outline_node.material
 	outline_node.material = styleMaterial
 	styleMaterial.set_shader(DOODLE)
 	styleMaterial.set_shader_parameter("body_color", get_body_color())
@@ -37,6 +38,7 @@ func doodle_style() -> void:
 
 func default_style() -> void:
 	body_node.visible = false;
+	outline_material = outline_node.material
 	outline_node.material = styleMaterial
 	styleMaterial.set_shader(REGULAR)
 	styleMaterial.set_shader_parameter("body_color", get_body_color())

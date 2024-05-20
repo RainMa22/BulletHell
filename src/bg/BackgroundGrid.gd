@@ -34,8 +34,11 @@ var style: Global.Style
 func _init():
 	super._init();
 
+var original_pos : Vector2 = Vector2.ZERO
+
 func _ready():
 	on_style_change()
+	original_pos = position
 
 func _is_valid() -> bool:
 	return is_instance_valid(self);
@@ -56,21 +59,11 @@ func draw_default():
 	var x_separation : float = width / float(num_of_dots_x - 1) # Calculates the x delta between adjacent points.
 	var y_separation : float = height / float(num_of_dots_y - 1) # Calculates the y delta between adjacent points.
 	var origin : Vector2 = Vector2(-width / 2, -height / 2) # Finds the negative-most corner for the first dot.	
-	# PARALLAX CALCULATIONS
-	var x_one_delta_progress := 0.0
-	if parallax_x_factor != 0:
-		x_one_delta_progress = x_scroll_delta / time_for_one_x_delta_scroll # from 0 to 1 based on how far one point should be offset in phase.
-	var x_parallax_offset := x_separation * x_one_delta_progress * parallax_x_factor
-	
-	var y_one_delta_progress := 0.0
-	if parallax_y_factor != 0:
-		y_one_delta_progress = y_scroll_delta / time_for_one_y_delta_scroll # from 0 to 1 based on how far one point should be offset in phase.
-	var y_parallax_offset := y_separation * y_one_delta_progress * parallax_y_factor
-	
+
 	for ix in range(0, num_of_dots_x):
 		for iy in range(0, num_of_dots_y):
 			var current_point : Vector2 = origin + Vector2(ix * x_separation, iy * y_separation)
-			draw_circle(current_point + Vector2(x_parallax_offset, y_parallax_offset), dot_radius, dot_color) # Draw dots at each point from indexes 0 to num_of_dots on both dimensions.
+			draw_circle(current_point, dot_radius, dot_color) # Draw dots at each point from indexes 0 to num_of_dots on both dimensions.
 
 func draw_doodle():
 	var y_separation : float = height / float(num_lines - 1) # Calculates the y delta between adjacent points.
@@ -99,4 +92,22 @@ func process_parallax(delta):
 		x_scroll_delta -= time_for_one_x_delta_scroll
 	while y_scroll_delta >= time_for_one_y_delta_scroll:
 		y_scroll_delta -= time_for_one_y_delta_scroll
-	queue_redraw()
+	if style == Global.Style.DOODLE:
+		queue_redraw()
+	elif style == Global.Style.REGULAR:
+		# POSITIONAL DATA
+		var x_separation : float = width / float(num_of_dots_x - 1) # Calculates the x delta between adjacent points.
+		var y_separation : float = height / float(num_of_dots_y - 1) # Calculates the y delta between adjacent points.
+		var origin : Vector2 = Vector2(-width / 2, -height / 2) # Finds the negative-most corner for the first dot.	
+		# PARALLAX CALCULATIONS
+		var x_one_delta_progress := 0.0
+		if parallax_x_factor != 0:
+			x_one_delta_progress = x_scroll_delta / time_for_one_x_delta_scroll # from 0 to 1 based on how far one point should be offset in phase.
+		var x_parallax_offset := x_separation * x_one_delta_progress * parallax_x_factor
+	
+		var y_one_delta_progress := 0.0
+		if parallax_y_factor != 0:
+			y_one_delta_progress = y_scroll_delta / time_for_one_y_delta_scroll # from 0 to 1 based on how far one point should be offset in phase.
+		var y_parallax_offset := y_separation * y_one_delta_progress * parallax_y_factor
+		
+		position = original_pos + Vector2(x_parallax_offset, y_parallax_offset)
