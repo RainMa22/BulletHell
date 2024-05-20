@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwn1aknxem4n4"]
+[gd_scene load_steps=13 format=3 uid="uid://cwn1aknxem4n4"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_fdp0l"]
 [ext_resource type="PackedScene" uid="uid://vgf7hy66lvwt" path="res://src/health/Health.tscn" id="2_7ekla"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dtjgq53jqd1in" path="res://resources/visuals/Ship1.png" id="3_xwl1j"]
 [ext_resource type="AudioStream" uid="uid://d1gjea7d2dfd2" path="res://resources/sound/Shoot3.wav" id="4_ltthc"]
 [ext_resource type="AudioStream" uid="uid://tb7oe3lg3vwm" path="res://resources/sound/Shoot4.wav" id="5_2t2n2"]
+[ext_resource type="Script" path="res://src/sound/music/sfx.gd" id="9_w6u26"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5o38"]
 
@@ -66,6 +67,7 @@ texture = ExtResource("3_xwl1j")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0
+script = ExtResource("9_w6u26")
 
 [connection signal="on_died" from="Health" to="." method="_on_health_on_died"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

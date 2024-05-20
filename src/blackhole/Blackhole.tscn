@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd6y8uiv1qd4h"]
+[gd_scene load_steps=6 format=3 uid="uid://bd6y8uiv1qd4h"]
 
 [ext_resource type="Script" path="res://src/blackhole/Blackhole.gd" id="1_opub8"]
 [ext_resource type="PackedScene" uid="uid://1kt7u71uwshe" path="res://src/blackhole/BlackHoleHurtbox.tscn" id="3_3okvp"]
 [ext_resource type="PackedScene" uid="uid://dw2y3v8nyx45i" path="res://src/blackhole/BlackHoleGravityBox.tscn" id="3_sburg"]
 [ext_resource type="AudioStream" uid="uid://6soqeve0c5i" path="res://resources/sound/NASABlackHole.mp3" id="4_s7jeq"]
+[ext_resource type="Script" path="res://src/sound/music/sfx.gd" id="5_fyatf"]
 
 [node name="Blackhole" type="Area2D"]
 position = Vector2(400, 300)
@@ -21,3 +22,4 @@ collision_mask = 30
 stream = ExtResource("4_s7jeq")
 volume_db = -15.0
 autoplay = true
+script = ExtResource("5_fyatf")

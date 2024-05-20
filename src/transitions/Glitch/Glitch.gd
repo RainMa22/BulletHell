@@ -10,7 +10,7 @@ func _ready():
 	var tween : Tween = create_tween()
 	var player: AudioStreamPlayer = AudioStreamPlayer.new()
 	player.stream = sfx_stream
-	player.volume_db = -10
+	player.volume_db = -10 + linear_to_db(ConfigManager.current_config.sfx_volume)
 	add_child(player)
 	for nod in [RED,GREEN,BLUE]:
 		tween.tween_interval(0.05)

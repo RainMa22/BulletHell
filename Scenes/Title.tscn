@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://g8isddkkro7e"]
+[gd_scene load_steps=7 format=3 uid="uid://g8isddkkro7e"]
 
 [ext_resource type="Script" path="res://src/PlayButtonFromSave.gd" id="1_uj2od"]
 [ext_resource type="Script" path="res://src/PlayButtonFromNew.gd" id="2_mh1gu"]
 [ext_resource type="PackedScene" uid="uid://bhc0ufx4ih1rd" path="res://src/ui/VolumerSlider.tscn" id="3_4g5jl"]
 [ext_resource type="FontFile" uid="uid://di660p74j128m" path="res://resources/visuals/friendlyscribbles.ttf" id="4_j8hik"]
 [ext_resource type="Texture2D" uid="uid://b45jiiec4v6sh" path="res://resources/visuals/Whitex64.png" id="5_ut4ip"]
+[ext_resource type="PackedScene" uid="uid://0a1ysy4dsndt" path="res://src/ui/Volumer2Slider.tscn" id="6_7x443"]
 
 [node name="Title" type="Node2D"]
-
-[node name="VolumeSlider" parent="." instance=ExtResource("3_4g5jl")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -76,6 +75,44 @@ autowrap_mode = 0
 [node name="Bg" type="Sprite2D" parent="."]
 modulate = Color(0.133333, 0.137255, 0.137255, 1)
 z_index = -2
-position = Vector2(248, 1000)
+position = Vector2(192, 1000)
 scale = Vector2(10000, 10000)
 texture = ExtResource("5_ut4ip")
+
+[node name="VolumeSlider" parent="." instance=ExtResource("3_4g5jl")]
+offset_left = -272.0
+offset_right = -32.0
+
+[node name="music" type="RichTextLabel" parent="VolumeSlider"]
+z_index = 2000
+clip_contents = false
+offset_left = -88.0
+offset_right = 7.69199
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = ExtResource("4_j8hik")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[center]music"
+fit_content = true
+
+[node name="VolumerSFXSlider" parent="." instance=ExtResource("6_7x443")]
+offset_left = 104.0
+offset_right = 344.0
+
+[node name="sfx" type="RichTextLabel" parent="VolumerSFXSlider"]
+z_index = 2000
+clip_contents = false
+offset_left = -80.0
+offset_right = 15.692
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0.133333, 0.137255, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.941176, 0.964706, 0.941176, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/normal_font = ExtResource("4_j8hik")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[center]sfx"
+fit_content = true

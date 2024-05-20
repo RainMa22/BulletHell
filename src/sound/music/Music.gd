@@ -22,9 +22,10 @@ func load_stream(first_time:bool = false):
 	match(type):
 		MusicType.GameMusic:
 			tween.tween_callback(load_game_music)
+			tween.tween_property(self, "volume_db", linear_to_db(ConfigManager.current_config.master_volume),0.)
 		MusicType.SoundEffects:
 			tween.tween_callback(load_sound_effects)
-	tween.tween_property(self, "volume_db", linear_to_db(ConfigManager.current_config.master_volume),0.)
+			tween.tween_property(self, "volume_db", linear_to_db(ConfigManager.current_config.sfx_volume),0.)
 	tween.tween_callback(play)
 	
 func load_game_music():

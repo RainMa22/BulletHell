@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://0a1ysy4dsndt"]
+
+[ext_resource type="Script" path="res://src/ui/Volumer2Slider.gd" id="1_eil6b"]
+
+[node name="VolumerSFXSlider" type="HSlider"]
+offset_left = -240.0
+offset_top = 256.0
+offset_bottom = 272.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+script = ExtResource("1_eil6b")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

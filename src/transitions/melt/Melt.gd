@@ -15,6 +15,7 @@ func _ready():
 	var tween:Tween = get_tree().create_tween();
 	var player: AudioStreamPlayer = AudioStreamPlayer.new()
 	player.stream = sfx_stream
+	player.volume_db = linear_to_db(ConfigManager.current_config.sfx_volume)
 	add_child(player)
 	player.play()
 	player.finished.connect(func (): tween.tween_callback(queue_free))

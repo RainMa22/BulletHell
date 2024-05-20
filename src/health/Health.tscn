@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vgf7hy66lvwt"]
+[gd_scene load_steps=7 format=3 uid="uid://vgf7hy66lvwt"]
 
 [ext_resource type="Script" path="res://src/health/Health.gd" id="1_rix5u"]
 [ext_resource type="AudioStream" uid="uid://dk3leowb3nr3t" path="res://resources/sound/Hit1.wav" id="2_46c2d"]
 [ext_resource type="AudioStream" uid="uid://bnyejix7lhaxj" path="res://resources/sound/Hit2.wav" id="3_fqcon"]
 [ext_resource type="AudioStream" uid="uid://bhy6v2ldmcd5r" path="res://resources/sound/Hit3.wav" id="4_f1mrh"]
 [ext_resource type="AudioStream" uid="uid://d4ha8wutvobig" path="res://resources/sound/Hit4.wav" id="5_hfvlo"]
+[ext_resource type="Script" path="res://src/sound/music/sfx.gd" id="6_rehde"]
 
 [node name="Health" type="Node"]
 script = ExtResource("1_rix5u")
@@ -14,5 +15,6 @@ damage_sfx = Array[AudioStream]([ExtResource("2_46c2d"), ExtResource("3_fqcon"),
 
 [node name="DamagePlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0
+script = ExtResource("6_rehde")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
