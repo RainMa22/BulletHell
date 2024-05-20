@@ -47,6 +47,7 @@ func doodle_style():
 	style = Global.Style.DOODLE
 func default_style():
 	style = Global.Style.REGULAR
+	queue_redraw()
 
 func _draw():
 	if(style == Global.Style.REGULAR):
@@ -93,6 +94,7 @@ func process_parallax(delta):
 	while y_scroll_delta >= time_for_one_y_delta_scroll:
 		y_scroll_delta -= time_for_one_y_delta_scroll
 	if style == Global.Style.DOODLE:
+		position = original_pos
 		queue_redraw()
 	elif style == Global.Style.REGULAR:
 		# POSITIONAL DATA
